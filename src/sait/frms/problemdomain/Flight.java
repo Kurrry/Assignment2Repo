@@ -1,5 +1,8 @@
 package sait.frms.problemdomain;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Flight {
     private String flightCode;
     private String airlineName;
@@ -63,7 +66,12 @@ public class Flight {
     }
 
     private void parseCode(String code) {
-        System.out.println(code);
+        Pattern regex = Pattern.compile("[A-Z]{2}+[\\-]+[0-9]{4}");
+        Matcher match = regex.matcher(code);
+        boolean matches = match.matches();
+        String airline = code.substring(0,1);
+
+
     }
     @Override
     public String toString() {

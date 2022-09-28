@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="Flight class more or less finished" />
+    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="All file plus Flight class more or less finished">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664262780916</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="All file plus Flight class more or less finished">
+      <created>1664263265345</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664263265345</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +129,7 @@
     </ignored-roots>
     <MESSAGE value="assignment 2 full files" />
     <MESSAGE value="Flight class more or less finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flight class more or less finished" />
+    <MESSAGE value="All file plus Flight class more or less finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="All file plus Flight class more or less finished" />
   </component>
 </project>
