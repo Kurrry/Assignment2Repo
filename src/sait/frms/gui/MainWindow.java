@@ -77,12 +77,15 @@ public class MainWindow extends JFrame
 		
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setPreferredSize(new Dimension(900, 700));
+		setResizable(false);
 		
 		northPanel = createNorthPanel();
 		add(northPanel, BorderLayout.NORTH);
 		
 		centerPanel = createCenterPanel();
 		add(centerPanel, BorderLayout.CENTER);
+
 	}
 	
 	/**

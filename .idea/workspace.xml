@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="All file plus Flight class more or less finished">
+    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="parseCode eludes me but the regex works at least">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="master" />
@@ -28,13 +37,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="AppDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sait.frms.application.AppDriver" />
@@ -92,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664263265345</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="parseCode eludes me but the regex works at least">
+      <created>1664398415021</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664398415021</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +147,7 @@
     <MESSAGE value="assignment 2 full files" />
     <MESSAGE value="Flight class more or less finished" />
     <MESSAGE value="All file plus Flight class more or less finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="All file plus Flight class more or less finished" />
+    <MESSAGE value="parseCode eludes me but the regex works at least" />
+    <option name="LAST_COMMIT_MESSAGE" value="parseCode eludes me but the regex works at least" />
   </component>
 </project>
