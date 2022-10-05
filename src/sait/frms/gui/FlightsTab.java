@@ -4,9 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.*;
 
+import org.omg.CORBA.TCKind;
 import sait.frms.manager.FlightManager;
 import sait.frms.manager.ReservationManager;
 import sait.frms.problemdomain.Flight;
@@ -55,13 +55,13 @@ public class FlightsTab extends TabBase
 		
 		JPanel centerPanel = createFlightsPanel();
 		JPanel reservePanel = createReservePanel();
-		JPanel centerPanel3 = createFlightsPanel();
+		JPanel flightFinderPanel = createFlightFinderPanel();
 
-		centerPanel3.setPreferredSize(new Dimension(900, 200));
+		flightFinderPanel.setPreferredSize(new Dimension(900, 200));
 		reservePanel.setPreferredSize(new Dimension(250, 400));
 		panel.add(centerPanel, BorderLayout.CENTER);
 		panel.add(reservePanel, BorderLayout.EAST);
-		panel.add(centerPanel3, BorderLayout.SOUTH);
+		panel.add(flightFinderPanel, BorderLayout.SOUTH);
 	}
 	
 	/**
@@ -108,9 +108,9 @@ public class FlightsTab extends TabBase
 	private JPanel createReservePanel() {
 		JPanel panel = new JPanel();
 		JLabel reserve = new JLabel("Reserve");
-		//JPanel reserveInfoList = reserveInfoList();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 25));
 		reserve.setFont(new Font("Serif", Font.PLAIN, 39));
+		
 		panel.add(reserve);
 		panel.add(reserveInfoList());
 		panel.add(reserveButton());
@@ -119,7 +119,7 @@ public class FlightsTab extends TabBase
 
 	private JButton reserveButton() {
 		JButton button = new JButton("Reserve");
-		button.addActionListener(new reserveButtonListner());
+		button.addActionListener(new reserveButtonListener());
 		button.setPreferredSize(new Dimension(225, 25));
 		return button;
 	}
@@ -173,13 +173,86 @@ public class FlightsTab extends TabBase
 		return panel;
 	}
 
-
-
 	private JPanel createFlightFinderPanel() {
-		return panel;
+		JPanel fFPanel = new JPanel();
+		JLabel flightFinder = new JLabel("Flight Finder");
+		fFPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 15));
+		flightFinder.setFont(new Font("Serif", Font.PLAIN, 34));
+
+		fFPanel.add(flightFinder);
+		fFPanel.add(fFInfoList());
+
+
+		return fFPanel;
 	}
 
-	private class  reserveButtonListner implements ActionListener {
+	private JPanel createFFComboBox(String[] options, String label) {
+		JComboBox<String> fFComboBox = new JComboBox<>(options);
+		JPanel fFBoxPanel = new JPanel();
+		JLabel fFLabel = new JLabel(label);
+
+		fFBoxPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		fFBoxPanel.setPreferredSize(new Dimension(800, 30));
+		fFComboBox.setPreferredSize(new Dimension(750, 25));
+		fFComboBox.addActionListener(new fFComboBoxListener());
+		fFBoxPanel.add(fFLabel);
+		fFBoxPanel.add(fFComboBox);
+
+		return fFBoxPanel;
+	}
+
+	private JPanel fFInfoList() {
+		JPanel fFPanel = new JPanel(new GridBagLayout());
+		GridBagConstraints FC = new GridBagConstraints();
+		GridBagConstraints TC = new GridBagConstraints();
+		GridBagConstraints DC = new GridBagConstraints();
+		GridBagConstraints BC = new GridBagConstraints();
+
+		FC.gridx = 0; FC.gridy = 0;
+		TC.gridx = 0; TC.gridy = 1;
+		DC.gridx = 0; DC.gridy = 2;
+		BC.gridx = 0; BC.gridy = 3;
+
+		String[] options = {"test1", "test2", "test3"};
+
+		fFPanel.add(createFFComboBox(options, "From:"), FC);
+		fFPanel.add(createFFComboBox(options, "To:"), TC);
+		fFPanel.add(createFFComboBox(options, "Day:"), DC);
+		fFPanel.add(fFButton(), BC);
+
+		return fFPanel;
+	}
+
+	private JPanel fFButton() {
+		JPanel buttonPanel = new JPanel();
+		JButton fFButton = new JButton("Find Flights");
+
+		fFButton.addActionListener(new fFButtonListener());
+		fFButton.setPreferredSize(new Dimension(880, 25));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		buttonPanel.setPreferredSize(new Dimension(890, 30));
+		buttonPanel.add(fFButton);
+
+		return buttonPanel;
+	}
+
+	private class fFButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+		}
+	}
+
+	private class fFComboBoxListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+		}
+	}
+
+	private class  reserveButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 		}

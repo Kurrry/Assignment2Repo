@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="parseCode eludes me but the regex works at least">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="swing stuff on the FlightsTab and forgot what on the MainWindow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664398415021</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="swing stuff on the FlightsTab and forgot what on the MainWindow">
+      <created>1664851058921</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664851058921</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +153,7 @@
     <MESSAGE value="Flight class more or less finished" />
     <MESSAGE value="All file plus Flight class more or less finished" />
     <MESSAGE value="parseCode eludes me but the regex works at least" />
-    <option name="LAST_COMMIT_MESSAGE" value="parseCode eludes me but the regex works at least" />
+    <MESSAGE value="swing stuff on the FlightsTab and forgot what on the MainWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="swing stuff on the FlightsTab and forgot what on the MainWindow" />
   </component>
 </project>
