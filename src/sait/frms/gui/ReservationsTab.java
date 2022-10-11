@@ -25,6 +25,9 @@ public class ReservationsTab extends TabBase {
 	
 	private DefaultListModel<Reservation> reservationsModel;
 	
+	/**
+	 * Textfields and button used in east(Reservations) panel.
+	 */
 	private JTextField codeTextBox;
 	private JTextField flightTextBox;
 	private JTextField airlineTextBox;
@@ -34,6 +37,9 @@ public class ReservationsTab extends TabBase {
 	private JComboBox statusComboBox;
 	private JButton updateButton; 
 	
+	/**
+	 * Textfields and button used in south(Search) panel
+	 */
 	private JTextField searchCodeTF;
 	private JTextField searchAirlineTF;
 	private JTextField searchNameTF;
@@ -61,8 +67,8 @@ public class ReservationsTab extends TabBase {
 	
 	
 	/**
-	 * Creates the north panel.
-	 * @return JPanel that goes in north.
+	 * Creates the north (title) panel used in the ReservationsTab.
+	 * @return JPanel northPanel.
 	 */
 	private JPanel createNorthPanel() 
 	{
@@ -75,7 +81,10 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
-	
+	/**
+	 * Creates the center (List) panel used in ReservationsTab. 
+	 * @return JPanel centerPanel
+	 */
 	private JPanel createCenterPanel() {
 		JPanel panel = new JPanel();
 
@@ -97,7 +106,10 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
-	
+	/**
+	 * Creates the east (Reservation) panel used in ReservationsTab.
+	 * @return JPanel eastPanel
+	 */
 	private JPanel createEastPanel() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -135,7 +147,10 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
-	
+	/**
+	 * Creates the south (Search) panel used in ReservationsTab.
+	 * @return JPanel southPanel
+	 */
 	private JPanel createSouthPanel() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -161,7 +176,22 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
-	
+	/**
+	 * Creates and returns panel used in eastPanel, contentPanel. Creates grid with labels on left and textfields/combobox on the right.
+	 * 
+	 * General row construction:
+	 * 	
+	 * -Label
+	 * JLabel Label = labelGenerator("Code:"); 			// Sends string to be generated and formatted in a label
+	 * GridBagConstraints LabelCon= createLabelCon(0); 	// Generates the label constraints, int sent is the row number
+	 * panel.add(Label, LabelCon); 						// Adds label with constraints to panel
+	 * 
+	 * -Panel
+	 * GridBagConstraints TFCon = createFieldCon(0); 	// Generates the field constraints, int sent is the row number
+	 * panel.add(TextBox, TFCon);						// Adds textfield/combobox with constraints to panel
+	 * 
+	 * @return JPanel reservationContentPanel
+	 */
 	private JPanel createResGridBox() {
 		JPanel panel = new JPanel(new GridBagLayout());
 		
@@ -218,6 +248,10 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
+	/**
+	 * Creates and returns panel used in eastPanel, bPanel. Creates button used to update a reservation.
+	 * @return JPanel updateButton
+	 */
 	private JPanel updateButton() {
 		JPanel panel = new JPanel();
 		
@@ -228,6 +262,23 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
+	/**
+	 * Creates and returns panel used in southPanel, contentPanel. Creates grid with labels on left and textfields on the right.
+	 * 
+	 * General row construction:
+	 * 	
+	 * -Label
+	 * JLabel Label = labelGenerator("Code:"); 			// Sends string to be generated and formatted in a label
+	 * GridBagConstraints LabelCon= createLabelCon(0); 	// Generates the label constraints, int sent is the row number
+	 * panel.add(Label, LabelCon); 						// Adds label with constraints to panel
+	 * 
+	 * -Panel
+	 * GridBagConstraints TFCon = createFieldCon(0); 	// Generates the field constraints, int sent is the row number
+	 * panel.add(TextBox, TFCon);						// Adds textfield with constraints to panel
+	 * 
+	 * @return JPanel searchContentPanel
+	 * @return
+	 */
 	private JPanel createSearchGridBox() {
 		JPanel panel = new JPanel(new GridBagLayout());
 		
@@ -256,6 +307,10 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
+	/**
+	 * Creates and returns panel used in southPanel, sPanel. Creates button used to search for a reservation.
+	 * @return JPanel searchButton
+	 */
 	private JPanel searchButton() {
 		JPanel panel = new JPanel();
 		
@@ -267,11 +322,10 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
-	
-	
-	
-	
-	
+	/**
+	 * Generates and returns a formatted textfield used in the eastPanel contentPanel
+	 * @return JTextField textfield
+	 */
 	private JTextField createReservationTF() {
 		JTextField textfield = new JTextField(14);
 		textfield.setBackground(Color.WHITE);
@@ -280,7 +334,12 @@ public class ReservationsTab extends TabBase {
 		return textfield;
 	}
 	
-
+	/**
+	 * Generates and returns the GridBagConstraints used for the labels in the southPanel & eastPanel, contentPanel
+	 * Takes in the desired row number of the label
+	 * @param y Row number
+	 * @return GridBagConstraints constraints
+	 */
 	private GridBagConstraints createLabelCon(int y) {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.anchor = GridBagConstraints.LINE_END;
@@ -291,6 +350,12 @@ public class ReservationsTab extends TabBase {
 		return constraints;
 	}
 	
+	/**
+	 * Generates and returns the GridBagConstraints used for the textfields/combobox in the southPanel & eastPanel, contentPanel
+	 * Takes in the desired row number of the textfield/combobox
+	 * @param y Row number
+	 * @return GridBagConstraints constraints
+	 */
 	private GridBagConstraints createFieldCon(int y) {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 1;
@@ -300,6 +365,11 @@ public class ReservationsTab extends TabBase {
 		return constraints;
 	}
 	
+	/**
+	 * Generates and returns a formatted label used to hold the names of the textfield/combobox
+	 * @param text Label text
+	 * @return JLabel Formatted label
+	 */
 	private JLabel labelGenerator(String text) {
 		JLabel label = new JLabel(text);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 15));
