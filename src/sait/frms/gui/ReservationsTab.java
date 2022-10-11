@@ -76,7 +76,6 @@ public class ReservationsTab extends TabBase {
 	}
 	
 	
-	
 	private JPanel createCenterPanel() {
 		JPanel panel = new JPanel();
 
@@ -98,6 +97,7 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 	
+	
 	private JPanel createEastPanel() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -105,33 +105,21 @@ public class ReservationsTab extends TabBase {
 		JLabel label = new JLabel("Reservations", SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		
-		codeTextBox = new JTextField(14);
+		codeTextBox = createReservationTF();
 		codeTextBox.setEditable(false);
-		codeTextBox.setBackground(Color.WHITE);
-		codeTextBox.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		
-		flightTextBox = new JTextField(14);
+		flightTextBox = createReservationTF();
 		flightTextBox.setEditable(false);
-		flightTextBox.setBackground(Color.WHITE);
-		flightTextBox.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		
-		airlineTextBox = new JTextField(14);
+		airlineTextBox = createReservationTF();
 		airlineTextBox.setEditable(false);
-		airlineTextBox.setBackground(Color.WHITE);
-		airlineTextBox.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		
-		costTextBox = new JTextField(14);
+		costTextBox = createReservationTF();
 		costTextBox.setEditable(false);
-		costTextBox.setBackground(Color.WHITE);
-		costTextBox.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		
-		nameTextBox = new JTextField(14);
-		nameTextBox.setBackground(Color.WHITE);
-		nameTextBox.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		nameTextBox = createReservationTF();
 		
-		citizTextBox = new JTextField(14);
-		citizTextBox.setBackground(Color.WHITE);
-		citizTextBox.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		citizTextBox = createReservationTF();
 		
 		String[] options = {"Active", "Inactive"};
 		statusComboBox = new JComboBox(options);
@@ -177,114 +165,55 @@ public class ReservationsTab extends TabBase {
 	private JPanel createResGridBox() {
 		JPanel panel = new JPanel(new GridBagLayout());
 		
-
-		GridBagConstraints codeLabelCon = new GridBagConstraints();
-		JLabel codeLabel = new JLabel("Code:");
-		codeLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		codeLabelCon.anchor = GridBagConstraints.LINE_END;
-		codeLabelCon.gridx = 0;
-		codeLabelCon.gridy = 0;
-		codeLabelCon.insets = new Insets(5,0,5,0);
+		JLabel codeLabel = labelGenerator("Code:");
+		GridBagConstraints codeLabelCon= createLabelCon(0);
 		panel.add(codeLabel, codeLabelCon);
 
-		GridBagConstraints codeTFCon = new GridBagConstraints();
-		codeTFCon.gridx = 1;
-		codeTFCon.gridy = 0;
-		codeTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints codeTFCon = createFieldCon(0);
 		panel.add(codeTextBox, codeTFCon);
 		
-		GridBagConstraints flightLabelCon = new GridBagConstraints();
-		JLabel flightLabel = new JLabel("Flight:");
-		flightLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		flightLabelCon.anchor = GridBagConstraints.LINE_END;
-		flightLabelCon.gridx = 0;
-		flightLabelCon.gridy = 1;
-		flightLabelCon.insets = new Insets(5,0,5,0);
+		JLabel flightLabel = labelGenerator("Flight:");
+		GridBagConstraints flightLabelCon = createLabelCon(1);
 		panel.add(flightLabel, flightLabelCon);
 		
-		GridBagConstraints flightTFCon = new GridBagConstraints();
-		flightTFCon.gridx = 1;
-		flightTFCon.gridy = 1;
-		flightTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints flightTFCon = createFieldCon(1);
 		panel.add(flightTextBox, flightTFCon);
 		
-		GridBagConstraints airlineLabelCon = new GridBagConstraints();
-		JLabel airlineLabel = new JLabel("Airline:");
-		airlineLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		airlineLabelCon.anchor = GridBagConstraints.LINE_END;
-		airlineLabelCon.gridx = 0;
-		airlineLabelCon.gridy = 2;
-		airlineLabelCon.insets = new Insets(5,0,5,0);
+		JLabel airlineLabel = labelGenerator("Airline:");
+		GridBagConstraints airlineLabelCon = createLabelCon(2);
 		panel.add(airlineLabel, airlineLabelCon);
 
-		GridBagConstraints airlineTFCon = new GridBagConstraints();
-		
-		airlineTFCon.gridx = 1;
-		airlineTFCon.gridy = 2;
-		airlineTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints airlineTFCon = createFieldCon(2);
 		panel.add(airlineTextBox, airlineTFCon);
 		
-		GridBagConstraints costLabelCon = new GridBagConstraints();
-		JLabel costLabel = new JLabel("Cost:");
-		costLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		costLabelCon.anchor = GridBagConstraints.LINE_END;
-		costLabelCon.gridx = 0;
-		costLabelCon.gridy = 3;
-		costLabelCon.insets = new Insets(5,0,5,0);
+		JLabel costLabel = labelGenerator("Cost:");
+		GridBagConstraints costLabelCon = createLabelCon(3);
 		panel.add(costLabel, costLabelCon);
 
-		GridBagConstraints costTFCon = new GridBagConstraints();
-		costTFCon.gridx = 1;
-		costTFCon.gridy = 3;
-		costTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints costTFCon = createFieldCon(3);
 		panel.add(costTextBox, costTFCon);
 		
-		GridBagConstraints nameLabelCon = new GridBagConstraints();
-		JLabel nameLabel = new JLabel("Name:");
-		nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		nameLabelCon.anchor = GridBagConstraints.LINE_END;
-		nameLabelCon.gridx = 0;
-		nameLabelCon.gridy = 4;
-		nameLabelCon.insets = new Insets(5,0,5,0);
+		JLabel nameLabel = labelGenerator("Name:");
+		GridBagConstraints nameLabelCon = createLabelCon(4);
 		panel.add(nameLabel, nameLabelCon);
 
-		GridBagConstraints nameTFCon = new GridBagConstraints();
-		nameTFCon.gridx = 1;
-		nameTFCon.gridy = 4;
-		nameTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints nameTFCon = createFieldCon(4);
 		panel.add(nameTextBox, nameTFCon);
 		
-		GridBagConstraints citizLabelCon = new GridBagConstraints();
-		JLabel citizLabel = new JLabel("Citizenship:");
-		citizLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		citizLabelCon.anchor = GridBagConstraints.LINE_END;
-		citizLabelCon.gridx = 0;
-		citizLabelCon.gridy = 5;
-		citizLabelCon.insets = new Insets(5,10,5,0);
+		JLabel citizLabel = labelGenerator("Citizenship:");
+		GridBagConstraints citizLabelCon = createLabelCon(5);
 		panel.add(citizLabel, citizLabelCon);
 
-		GridBagConstraints citizTFCon = new GridBagConstraints();
-		citizTFCon.gridx = 1;
-		citizTFCon.gridy = 5;
-		citizTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints citizTFCon = createFieldCon(5);
 		panel.add(citizTextBox, citizTFCon);
 		
-		GridBagConstraints statusLabelCon = new GridBagConstraints();
-		JLabel statusLabel = new JLabel("Status:");
-		statusLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		statusLabelCon.anchor = GridBagConstraints.LINE_END;
-		statusLabelCon.gridx = 0;
-		statusLabelCon.gridy = 6;
-		statusLabelCon.insets = new Insets(5,10,5,0);
+		JLabel statusLabel = labelGenerator("Status:");
+		GridBagConstraints statusLabelCon = createLabelCon(6);
 		panel.add(statusLabel, statusLabelCon);
 
-		GridBagConstraints statusTFCon = new GridBagConstraints();
-		statusTFCon.gridx = 1;
-		statusTFCon.gridy = 6;
-		statusTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints statusTFCon = createFieldCon(6);
 		statusTFCon.fill = GridBagConstraints.HORIZONTAL;
 		panel.add(statusComboBox, statusTFCon);
-		
 		
 		return panel;
 	}
@@ -302,49 +231,25 @@ public class ReservationsTab extends TabBase {
 	private JPanel createSearchGridBox() {
 		JPanel panel = new JPanel(new GridBagLayout());
 		
-		GridBagConstraints searchCodeLabelCon = new GridBagConstraints();
-		JLabel searchCodeLabel = new JLabel("Code:");
-		searchCodeLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		searchCodeLabelCon.anchor = GridBagConstraints.LINE_END;
-		searchCodeLabelCon.gridx = 0;
-		searchCodeLabelCon.gridy = 0;
-		searchCodeLabelCon.insets = new Insets(5,0,5,0);
+		JLabel searchCodeLabel = labelGenerator("Code:");
+		GridBagConstraints searchCodeLabelCon = createLabelCon(0);
 		panel.add(searchCodeLabel, searchCodeLabelCon);
 
-		GridBagConstraints searchCodeTFCon = new GridBagConstraints();
-		searchCodeTFCon.gridx = 1;
-		searchCodeTFCon.gridy = 0;
-		searchCodeTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints searchCodeTFCon = createFieldCon(0);
 		panel.add(searchCodeTF, searchCodeTFCon);
 		
-		GridBagConstraints searchAirlineLabelCon = new GridBagConstraints();
-		JLabel searchAirlineLabel = new JLabel("Airline:");
-		searchAirlineLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		searchAirlineLabelCon.anchor = GridBagConstraints.LINE_END;
-		searchAirlineLabelCon.gridx = 0;
-		searchAirlineLabelCon.gridy = 1;
-		searchAirlineLabelCon.insets = new Insets(5,0,5,0);
+		JLabel searchAirlineLabel = labelGenerator("Airline:");
+		GridBagConstraints searchAirlineLabelCon = createLabelCon(1);
 		panel.add(searchAirlineLabel, searchAirlineLabelCon);
 
-		GridBagConstraints searchAirlineTFCon = new GridBagConstraints();
-		searchAirlineTFCon.gridx = 1;
-		searchAirlineTFCon.gridy = 1;
-		searchAirlineTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints searchAirlineTFCon = createFieldCon(1);
 		panel.add(searchAirlineTF, searchAirlineTFCon);
 		
-		GridBagConstraints searchNameLabelCon = new GridBagConstraints();
-		JLabel searchNameLabel = new JLabel("Name:");
-		searchNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		searchNameLabelCon.anchor = GridBagConstraints.LINE_END;
-		searchNameLabelCon.gridx = 0;
-		searchNameLabelCon.gridy = 2;
-		searchNameLabelCon.insets = new Insets(5,0,5,0);
+		JLabel searchNameLabel = labelGenerator("Name:");
+		GridBagConstraints searchNameLabelCon = createLabelCon(2);
 		panel.add(searchNameLabel, searchNameLabelCon);
 
-		GridBagConstraints searchNameTFCon = new GridBagConstraints();
-		searchNameTFCon.gridx = 1;
-		searchNameTFCon.gridy = 2;
-		searchNameTFCon.insets = new Insets(5,5,5,10);
+		GridBagConstraints searchNameTFCon = createFieldCon(2);
 		panel.add(searchNameTF, searchNameTFCon);
 		
 		
@@ -361,6 +266,49 @@ public class ReservationsTab extends TabBase {
 		
 		return panel;
 	}
+	
+	
+	
+	
+	
+	
+	private JTextField createReservationTF() {
+		JTextField textfield = new JTextField(14);
+		textfield.setBackground(Color.WHITE);
+		textfield.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		
+		return textfield;
+	}
+	
+
+	private GridBagConstraints createLabelCon(int y) {
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.anchor = GridBagConstraints.LINE_END;
+		constraints.gridx = 0;
+		constraints.gridy = y;
+		constraints.insets = new Insets(5,0,5,0);
+		
+		return constraints;
+	}
+	
+	private GridBagConstraints createFieldCon(int y) {
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.gridx = 1;
+		constraints.gridy = y;
+		constraints.insets = new Insets(5,5,5,10);
+		
+		return constraints;
+	}
+	
+	private JLabel labelGenerator(String text) {
+		JLabel label = new JLabel(text);
+		label.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		
+		return label;
+	}
+	
+	
+	
 	
 	
 	
