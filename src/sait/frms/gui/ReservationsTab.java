@@ -67,9 +67,7 @@ public class ReservationsTab extends TabBase {
 	{
 		JPanel panel = new JPanel();
 
-		JLabel title = new JLabel("Reservations", SwingConstants.CENTER);
-		title.setFont(new Font("serif", Font.PLAIN, 45));
-		panel.add(title);
+		panel.add(titleGenerator("Reservations", 45));
 
 		return panel;
 	}
@@ -107,24 +105,21 @@ public class ReservationsTab extends TabBase {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 
-		JLabel label = new JLabel("Reservations", SwingConstants.CENTER);
-		label.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-
-		codeTextBox = createReservationTF();
+		codeTextBox = createReservationTF(14);
 		codeTextBox.setEditable(false);
 
-		flightTextBox = createReservationTF();
+		flightTextBox = createReservationTF(14);
 		flightTextBox.setEditable(false);
 
-		airlineTextBox = createReservationTF();
+		airlineTextBox = createReservationTF(14);
 		airlineTextBox.setEditable(false);
 
-		costTextBox = createReservationTF();
+		costTextBox = createReservationTF(14);
 		costTextBox.setEditable(false);
 
-		nameTextBox = createReservationTF();
+		nameTextBox = createReservationTF(14);
 
-		citizTextBox = createReservationTF();
+		citizTextBox = createReservationTF(14);
 
 		String[] options = {"Active", "Inactive"};
 		statusComboBox = new JComboBox<>(options);
@@ -133,7 +128,7 @@ public class ReservationsTab extends TabBase {
 
 		panel.add(updateButton(), BorderLayout.SOUTH);
 		panel.add(createResGridBox(), BorderLayout.CENTER);
-		panel.add(label, BorderLayout.NORTH);
+		panel.add(titleGenerator("Reservations", 30), BorderLayout.NORTH);
 		return panel;
 	}
 
@@ -148,21 +143,95 @@ public class ReservationsTab extends TabBase {
 		JLabel label = new JLabel("Search", SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 
-		searchCodeTF = new JTextField();
-		searchCodeTF.setColumns(70);
+		searchCodeTF = createReservationTF(60);
 
-		searchAirlineTF = new JTextField();
-		searchAirlineTF.setColumns(70);
+		searchAirlineTF = createReservationTF(60);
 
-		searchNameTF = new JTextField();
-		searchNameTF.setColumns(70);
+		searchNameTF = createReservationTF(60);
 
 		panel.add(searchButton(), BorderLayout.SOUTH);
 		panel.add(createSearchGridBag(), BorderLayout.CENTER);
-		panel.add(label, BorderLayout.NORTH);
+		panel.add(titleGenerator("Search", 30), BorderLayout.NORTH);
 		return panel;
 	}
 
+	
+	
+	
+	
+	
+
+	/**
+	 * Creates and returns panel used in eastPanel, bPanel. Creates button used to update a reservation.
+	 * @return JPanel updateButton
+	 */
+	private JPanel updateButton() {
+		JPanel panel = new JPanel();
+
+		updateButton = new JButton("Update");
+		updateButton.setPreferredSize(new Dimension(225, 25));
+		updateButton.addActionListener(new ReservationActionListener());
+		panel.add(updateButton);
+		return panel;
+	}
+	
+	/**
+	 * Creates and returns panel used in southPanel, sPanel. Creates button used to search for a reservation.
+	 * @return JPanel searchButton
+	 */
+	private JPanel searchButton() {
+		JPanel panel = new JPanel();
+
+		searchButton = new JButton("Find Reservations");
+		searchButton.setPreferredSize(new Dimension(890, 30));
+		searchButton.addActionListener(new ReservationActionListener());
+		panel.add(searchButton);
+
+		return panel;
+	}
+	
+	/**
+	 * Generates and returns a formatted textfield used in the eastPanel and southPanel, contentPanel
+	 * @param width The width of the textfield in columns
+	 * @return JTextField textfield
+	 */
+	private JTextField createReservationTF(int width) {
+		JTextField textField = new JTextField(width);
+		textField.setBackground(Color.WHITE);
+		textField.setFont(new Font("Times New Roman", Font.BOLD, 15));
+
+		return textField;
+	}
+	
+	/**
+	 * Generates and returns a formatted label used to hold the names of the textfield/combobox
+	 * @param text Label text
+	 * @return JLabel Formatted label
+	 */
+	private JLabel labelGenerator(String text) {
+		JLabel label = new JLabel(text);
+		label.setFont(new Font("Times New Roman", Font.BOLD, 15));
+
+		return label;
+	}
+
+	/**
+	 * Generates and returns a formatted label used to hold the names of the textfield/combobox
+	 * @param text Label text
+	 * @param size Label text font size
+	 * @return JLabel Formatted label
+	 */
+	private JLabel titleGenerator(String text, int size) {
+		JLabel title = new JLabel(text, SwingConstants.CENTER);
+		title.setFont(new Font("Times New Roman", Font.PLAIN, size));
+
+		return title;
+	}
+
+	
+	
+	
+	
 	/**
 	 * Creates and returns panel used in eastPanel, contentPanel. Creates grid with labels on left and textfields/combobox on the right.
 	 *
@@ -202,21 +271,8 @@ public class ReservationsTab extends TabBase {
 
 		return panel;
 	}
-
-	/**
-	 * Creates and returns panel used in eastPanel, bPanel. Creates button used to update a reservation.
-	 * @return JPanel updateButton
-	 */
-	private JPanel updateButton() {
-		JPanel panel = new JPanel();
-
-		updateButton = new JButton("Update");
-		updateButton.setPreferredSize(new Dimension(225, 25));
-		updateButton.addActionListener(new ReservationActionListener());
-		panel.add(updateButton);
-		return panel;
-	}
-
+	
+	
 	/**
 	 * Creates and returns panel used in southPanel, contentPanel. Creates grid with labels on left and textfields on the right.
 	 *
@@ -245,33 +301,6 @@ public class ReservationsTab extends TabBase {
 		panel.add(searchNameTF, createFieldCon(2));
 
 		return panel;
-	}
-
-	/**
-	 * Creates and returns panel used in southPanel, sPanel. Creates button used to search for a reservation.
-	 * @return JPanel searchButton
-	 */
-	private JPanel searchButton() {
-		JPanel panel = new JPanel();
-
-		searchButton = new JButton("Find Reservations");
-		searchButton.setPreferredSize(new Dimension(890, 30));
-		searchButton.addActionListener(new ReservationActionListener());
-		panel.add(searchButton);
-
-		return panel;
-	}
-
-	/**
-	 * Generates and returns a formatted textfield used in the eastPanel contentPanel
-	 * @return JTextField textfield
-	 */
-	private JTextField createReservationTF() {
-		JTextField textField = new JTextField(14);
-		textField.setBackground(Color.WHITE);
-		textField.setFont(new Font("Times New Roman", Font.BOLD, 15));
-
-		return textField;
 	}
 
 	/**
@@ -304,19 +333,6 @@ public class ReservationsTab extends TabBase {
 
 		return constraints;
 	}
-
-	/**
-	 * Generates and returns a formatted label used to hold the names of the textfield/combobox
-	 * @param text Label text
-	 * @return JLabel Formatted label
-	 */
-	private JLabel labelGenerator(String text) {
-		JLabel label = new JLabel(text);
-		label.setFont(new Font("Times New Roman", Font.BOLD, 15));
-
-		return label;
-	}
-
 
 
 
