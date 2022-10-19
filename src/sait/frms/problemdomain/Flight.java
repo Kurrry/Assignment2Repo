@@ -19,7 +19,7 @@ public class Flight {
 
     }
 
-    public Flight(String flightCode, String airlineName, String fromCode, String toCode, String weekday,
+    public Flight(String flightCode, String fromCode, String toCode, String weekday,
                   String time, int seats, double costPerSeat) {
 
         try {
@@ -29,8 +29,8 @@ public class Flight {
             NF.exceptionMessage();
         }
 
+        this.airlineName = getAirlineName(flightCode.substring(0,2));
         this.flightCode = flightCode;
-        this.airlineName = airlineName;
         this.fromCode = fromCode;
         this.toCode = toCode;
         this.weekday = weekday;
@@ -43,27 +43,26 @@ public class Flight {
         return flightCode;
     }
 
-    public String getAirlineName() {
-        String airName = "";
+    public String getAirlineName(String substring) {
 
-        switch(airlineName) {
+        switch(substring) {
             case "OA":
-                airName = "Otto Airlines";
+                airlineName = "Otto Airlines";
                 break;
 
             case "CA":
-                airName = "Conned Air";
+                airlineName = "Conned Air";
                 break;
 
             case "TB":
-                airName = "Try a Buss Airways";
+                airlineName = "Try a Buss Airways";
                 break;
 
             case "VA":
-                airName = "Vertical Airways";
+                airlineName = "Vertical Airways";
                 break;
         }
-        return airName;
+        return airlineName;
     }
 
     public String getFromCode() {
@@ -96,7 +95,7 @@ public class Flight {
 
     private void parseCode(String code) throws NoFlightFoundException {
 
-            Pattern regex = Pattern.compile("[A-Z]{2}+[\\-]+[0-9]{4}");
+            Pattern regex = Pattern.compile("[ABCOTV]{2}[\\-]+[0-9]{4}");
             Matcher match = regex.matcher(code);
             boolean matches = match.matches();
             if (!matches) {

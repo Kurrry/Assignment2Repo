@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="formatting/cleaning up">
-      <change afterPath="$PROJECT_DIR$/src/sait/frms/exception/NoFlightFoundException.java" afterDir="false" />
+    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="Cleaned up gridbag in flightstab, created starting point of first exception (going to ask maryam about this today) and finished up the flight class based on my current assumption that my exception works.">
+      <change afterPath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +41,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TestClass">
     <configuration name="AppDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sait.frms.application.AppDriver" />
       <module name="Assignment2" />
@@ -57,8 +55,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sait.frms.application.TestClass" />
+      <module name="Assignment2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sait.frms.application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestClass" />
         <item itemvalue="Application.AppDriver" />
       </list>
     </recent_temporary>
@@ -86,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666198358847</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Cleaned up gridbag in flightstab, created starting point of first exception (going to ask maryam about this today) and finished up the flight class based on my current assumption that my exception works.">
+      <created>1666200748614</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666200748614</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +121,53 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="formatting/cleaning up" />
-    <option name="LAST_COMMIT_MESSAGE" value="formatting/cleaning up" />
+    <MESSAGE value="Cleaned up gridbag in flightstab, created starting point of first exception (going to ask maryam about this today) and finished up the flight class based on my current assumption that my exception works." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up gridbag in flightstab, created starting point of first exception (going to ask maryam about this today) and finished up the flight class based on my current assumption that my exception works." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
