@@ -151,29 +151,14 @@ public class FlightsTab extends TabBase
 
 	private JPanel reserveInfoList() {
 		JPanel panel = new JPanel(new GridBagLayout());
-		GridBagConstraints FC = new GridBagConstraints();
-		GridBagConstraints AC = new GridBagConstraints();
-		GridBagConstraints DC = new GridBagConstraints();
-		GridBagConstraints TC = new GridBagConstraints();
-		GridBagConstraints CC = new GridBagConstraints();
-		GridBagConstraints NC = new GridBagConstraints();
-		GridBagConstraints CiC = new GridBagConstraints();
 
-		FC.gridx = 0; FC.gridy = 0;
-		AC.gridx = 0; AC.gridy = 1;
-		DC.gridx = 0; DC.gridy = 2;
-		TC.gridx = 0; TC.gridy = 3;
-		CC.gridx = 0; CC.gridy = 4;
-		NC.gridx = 0; NC.gridy = 5;
-		CiC.gridx = 0; CiC.gridy = 6;
-
-		panel.add(reserveListPanels("Flight:"), FC);
-		panel.add(reserveListPanels("Airline:"), AC);
-		panel.add(reserveListPanels("Day:"), DC);
-		panel.add(reserveListPanels("Time:"), TC);
-		panel.add(reserveListPanels("Cost:"), CC);
-		panel.add(reserveListPanels("Name:"), NC);
-		panel.add(reserveListPanels("Citizenship:"), CiC);
+		panel.add(reserveListPanels("Flight:"), createCon(0));
+		panel.add(reserveListPanels("Airline:"), createCon(1));
+		panel.add(reserveListPanels("Day:"), createCon(2));
+		panel.add(reserveListPanels("Time:"), createCon(3));
+		panel.add(reserveListPanels("Cost:"), createCon(4));
+		panel.add(reserveListPanels("Name:"), createCon(5));
+		panel.add(reserveListPanels("Citizenship:"), createCon(6));
 
 		return panel;
 	}
@@ -208,22 +193,13 @@ public class FlightsTab extends TabBase
 
 	private JPanel fFInfoList() {
 		JPanel fFPanel = new JPanel(new GridBagLayout());
-		GridBagConstraints FC = new GridBagConstraints();
-		GridBagConstraints TC = new GridBagConstraints();
-		GridBagConstraints DC = new GridBagConstraints();
-		GridBagConstraints BC = new GridBagConstraints();
-
-		FC.gridx = 0; FC.gridy = 0;
-		TC.gridx = 0; TC.gridy = 1;
-		DC.gridx = 0; DC.gridy = 2;
-		BC.gridx = 0; BC.gridy = 3;
 
 		String[] options = {"test1", "test2", "test3"};
 
-		fFPanel.add(createFFComboBox(options, "From:"), FC);
-		fFPanel.add(createFFComboBox(options, "To:"), TC);
-		fFPanel.add(createFFComboBox(options, "Day:"), DC);
-		fFPanel.add(fFButton(), BC);
+		fFPanel.add(createFFComboBox(options, "From:"), createCon(0));
+		fFPanel.add(createFFComboBox(options, "To:"), createCon(1));
+		fFPanel.add(createFFComboBox(options, "Day:"), createCon(2));
+		fFPanel.add(fFButton(), createCon(3));
 
 		return fFPanel;
 	}
@@ -239,6 +215,14 @@ public class FlightsTab extends TabBase
 		buttonPanel.add(btnFlightFind);
 
 		return buttonPanel;
+	}
+
+	private GridBagConstraints createCon(int y) {
+		GridBagConstraints constraint = new GridBagConstraints();
+		constraint.gridx = 0;
+		constraint.gridy = y;
+
+		return constraint;
 	}
 
 	private class fFButtonListener implements ActionListener {

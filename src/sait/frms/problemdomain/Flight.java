@@ -1,5 +1,7 @@
 package sait.frms.problemdomain;
 
+import sait.frms.exception.NoFlightFoundException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,6 +21,14 @@ public class Flight {
 
     public Flight(String flightCode, String airlineName, String fromCode, String toCode, String weekday,
                   String time, int seats, double costPerSeat) {
+
+        try {
+            parseCode(flightCode);
+            throw new NoFlightFoundException();
+        } catch (NoFlightFoundException NF) {
+            NF.exceptionMessage();
+        }
+
         this.flightCode = flightCode;
         this.airlineName = airlineName;
         this.fromCode = fromCode;
@@ -34,7 +44,26 @@ public class Flight {
     }
 
     public String getAirlineName() {
-        return airlineName;
+        String airName = "";
+
+        switch(airlineName) {
+            case "OA":
+                airName = "Otto Airlines";
+                break;
+
+            case "CA":
+                airName = "Conned Air";
+                break;
+
+            case "TB":
+                airName = "Try a Buss Airways";
+                break;
+
+            case "VA":
+                airName = "Vertical Airways";
+                break;
+        }
+        return airName;
     }
 
     public String getFromCode() {
@@ -65,13 +94,14 @@ public class Flight {
         return flightCode.charAt(0) == 'Y';
     }
 
-    private void parseCode(String code) {
-        Pattern regex = Pattern.compile("[A-Z]{2}+[\\-]+[0-9]{4}");
-        Matcher match = regex.matcher(code);
-        boolean matches = match.matches();
-        String airline = code.substring(0,1);
+    private void parseCode(String code) throws NoFlightFoundException {
 
-
+            Pattern regex = Pattern.compile("[A-Z]{2}+[\\-]+[0-9]{4}");
+            Matcher match = regex.matcher(code);
+            boolean matches = match.matches();
+            if (!matches) {
+                throw new NoFlightFoundException();
+            }
     }
     @Override
     public String toString() {

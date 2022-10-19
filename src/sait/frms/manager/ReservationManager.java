@@ -12,8 +12,8 @@ public class ReservationManager {
 	public ReservationManager() {
 	}
 	
-	public Reservation makeReservation(Flight flight, String name, String citizenship)  {
+	/*public Reservation makeReservation(Flight flight, String name, String citizenship)  {
 		
-	}
+	}*/
 
 }
