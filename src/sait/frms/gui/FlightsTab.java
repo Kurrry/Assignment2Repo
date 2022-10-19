@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.event.*;
 
-import org.omg.CORBA.TCKind;
 import sait.frms.manager.FlightManager;
 import sait.frms.manager.ReservationManager;
 import sait.frms.problemdomain.Flight;
@@ -34,7 +33,13 @@ public class FlightsTab extends TabBase
 	
 	private DefaultListModel<Flight> flightsModel;
 
-	
+	private JScrollPane scrollPane;
+	private JButton btnReserve;
+	private JButton btnFlightFind;
+	private JTextField txtReserveList;
+	private JComboBox<String> cBoxFlightFind;
+
+
 	/**
 	 * Creates the components for flights tab.
 	 */
@@ -49,10 +54,10 @@ public class FlightsTab extends TabBase
 		this.reservationManager = reservationManager;
 		
 		panel.setLayout(new BorderLayout());
-		
+
 		JPanel northPanel = createNorthPanel();
 		panel.add(northPanel, BorderLayout.NORTH);
-		
+
 		JPanel centerPanel = createFlightsPanel();
 		JPanel reservePanel = createReservePanel();
 		JPanel flightFinderPanel = createFlightFinderPanel();
@@ -96,7 +101,7 @@ public class FlightsTab extends TabBase
 		flightsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		// Wrap JList in JScrollPane so it is scrollable.
-		JScrollPane scrollPane = new JScrollPane(this.flightsList);
+		scrollPane = new JScrollPane(this.flightsList);
 		
 		flightsList.addListSelectionListener(new MyListSelectionListener());
 		
@@ -118,29 +123,29 @@ public class FlightsTab extends TabBase
 	}
 
 	private JButton reserveButton() {
-		JButton button = new JButton("Reserve");
-		button.addActionListener(new reserveButtonListener());
-		button.setPreferredSize(new Dimension(225, 25));
-		return button;
+		btnReserve = new JButton("Reserve");
+		btnReserve.addActionListener(new reserveButtonListener());
+		btnReserve.setPreferredSize(new Dimension(225, 25));
+		return btnReserve;
 	}
 
 	private JPanel reserveListPanels(String label) {
 		JPanel panel = new JPanel();
 		JLabel labelText = new JLabel(label);
-		JTextField textField = new JTextField(14);
+		txtReserveList = new JTextField(14);
 
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panel.setPreferredSize(new Dimension(250, 30));
-		textField.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		textField.setEditable(false);
+		txtReserveList.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		txtReserveList.setEditable(false);
 
 		if(label.equals("Citizenship:") || label.equals("Name:")) {
-			textField.setEditable(true);
+			txtReserveList.setEditable(true);
 		}
 
 
 		panel.add(labelText);
-		panel.add(textField);
+		panel.add(txtReserveList);
 		return panel;
 	}
 
@@ -187,16 +192,16 @@ public class FlightsTab extends TabBase
 	}
 
 	private JPanel createFFComboBox(String[] options, String label) {
-		JComboBox<String> fFComboBox = new JComboBox<>(options);
+		cBoxFlightFind = new JComboBox<>(options);
 		JPanel fFBoxPanel = new JPanel();
 		JLabel fFLabel = new JLabel(label);
 
 		fFBoxPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		fFBoxPanel.setPreferredSize(new Dimension(800, 30));
-		fFComboBox.setPreferredSize(new Dimension(750, 25));
-		fFComboBox.addActionListener(new fFComboBoxListener());
+		cBoxFlightFind.setPreferredSize(new Dimension(750, 25));
+		cBoxFlightFind.addActionListener(new fFComboBoxListener());
 		fFBoxPanel.add(fFLabel);
-		fFBoxPanel.add(fFComboBox);
+		fFBoxPanel.add(cBoxFlightFind);
 
 		return fFBoxPanel;
 	}
@@ -225,13 +230,13 @@ public class FlightsTab extends TabBase
 
 	private JPanel fFButton() {
 		JPanel buttonPanel = new JPanel();
-		JButton fFButton = new JButton("Find Flights");
+		btnFlightFind = new JButton("Find Flights");
 
-		fFButton.addActionListener(new fFButtonListener());
-		fFButton.setPreferredSize(new Dimension(880, 25));
+		btnFlightFind.addActionListener(new fFButtonListener());
+		btnFlightFind.setPreferredSize(new Dimension(790, 25));
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		buttonPanel.setPreferredSize(new Dimension(890, 30));
-		buttonPanel.add(fFButton);
+		buttonPanel.add(btnFlightFind);
 
 		return buttonPanel;
 	}
