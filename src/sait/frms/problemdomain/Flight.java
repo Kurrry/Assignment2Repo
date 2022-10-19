@@ -20,14 +20,12 @@ public class Flight {
     }
 
     public Flight(String flightCode, String fromCode, String toCode, String weekday,
-                  String time, int seats, double costPerSeat) {
+                  String time, int seats, double costPerSeat) throws NoFlightFoundException{
 
-        try {
-            parseCode(flightCode);
-            throw new NoFlightFoundException();
-        } catch (NoFlightFoundException NF) {
-            NF.exceptionMessage();
-        }
+            if (!parseCode(flightCode)) {
+                throw new NoFlightFoundException();
+
+            }
 
         this.airlineName = getAirlineName(flightCode.substring(0,2));
         this.flightCode = flightCode;
@@ -93,7 +91,7 @@ public class Flight {
         return flightCode.charAt(0) == 'Y';
     }
 
-    private void parseCode(String code) throws NoFlightFoundException {
+    private boolean parseCode(String code) throws NoFlightFoundException {
 
             Pattern regex = Pattern.compile("[ABCOTV]{2}[\\-]+[0-9]{4}");
             Matcher match = regex.matcher(code);
@@ -101,6 +99,8 @@ public class Flight {
             if (!matches) {
                 throw new NoFlightFoundException();
             }
+
+            return true;
     }
     @Override
     public String toString() {
