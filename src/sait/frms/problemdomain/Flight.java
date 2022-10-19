@@ -22,10 +22,7 @@ public class Flight {
     public Flight(String flightCode, String fromCode, String toCode, String weekday,
                   String time, int seats, double costPerSeat) throws NoFlightFoundException{
 
-            if (!parseCode(flightCode)) {
-                throw new NoFlightFoundException();
-
-            }
+        parseCode(flightCode);
 
         this.airlineName = getAirlineName(flightCode.substring(0,2));
         this.flightCode = flightCode;
@@ -104,7 +101,7 @@ public class Flight {
     }
     @Override
     public String toString() {
-        return getFlightCode() + ", From: " + getFromCode() + ", To: " + getToCode() + ", Day: " +
+        return getFlightCode() + ", From: " + getFromCode() + ", To: " + getToCode() + ", Day: " + getWeekday() +
                 ", Cost: " + getCostPerSeat();
     }
 
