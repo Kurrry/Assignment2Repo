@@ -20,7 +20,7 @@ public class Flight {
     }
 
     public Flight(String flightCode, String fromCode, String toCode, String weekday,
-                  String time, int seats, double costPerSeat) throws NoFlightFoundException{
+                  String time, int seats, double costPerSeat) throws NoFlightFoundException {
 
         parseCode(flightCode);
 
@@ -80,10 +80,15 @@ public class Flight {
         return seats;
     }
 
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
     public double getCostPerSeat() {
         return costPerSeat;
     }
 
+    //needs to be finished I think
     public boolean isDomestic() {
         return flightCode.charAt(0) == 'Y';
     }
@@ -94,7 +99,7 @@ public class Flight {
             Matcher match = regex.matcher(code);
             boolean matches = match.matches();
             if (!matches) {
-                throw new NoFlightFoundException();
+                throw new NoFlightFoundException(code);
             }
 
             return true;

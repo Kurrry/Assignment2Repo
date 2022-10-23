@@ -17,3 +17,6 @@ public class ReservationManager {
 	}*/
 
 }
+
+
+//persist() method saves reservations to the binary file
