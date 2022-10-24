@@ -11,15 +11,13 @@ public class Reservation {
 	
 	
 	public Reservation(String reservationCode, String flightCode, String airline, String name, String citizenship,
-			double cost, boolean active) {
-		super();
+			double cost) {
 		this.reservationCode = reservationCode;
 		this.flightCode = flightCode;
 		this.airline = airline;
 		this.name = name;
 		this.citizenship = citizenship;
 		this.cost = cost;
-		this.active = active;
 	}
 
 
