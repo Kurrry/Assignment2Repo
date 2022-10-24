@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="Commit to life baby">
-      <change afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Airport.java" afterDir="false" />
+    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="Bug testing the flight class, this is also just for me to download so i can show maryam">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/exception/NoFlightFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/exception/NoFlightFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Airport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +41,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.AppDriver">
+  <component name="RunManager" selected="Application.TestClass">
     <configuration name="AppDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sait.frms.application.AppDriver" />
       <module name="Assignment2" />
@@ -73,15 +70,15 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AppDriver" />
         <item itemvalue="Application.TestClass" />
+        <item itemvalue="Application.AppDriver" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="yerp" />
+      <changelist id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="" />
       <created>1665702590001</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -115,21 +112,7 @@
       <option name="project" value="LOCAL" />
       <updated>1666202613199</updated>
     </task>
-    <task id="LOCAL-00005" summary="yerp">
-      <created>1666206988824</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1666206988824</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Commit to life baby">
-      <created>1666217020939</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1666217020939</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,18 +130,6 @@
     <MESSAGE value="formatting/cleaning up" />
     <MESSAGE value="Cleaned up gridbag in flightstab, created starting point of first exception (going to ask maryam about this today) and finished up the flight class based on my current assumption that my exception works." />
     <MESSAGE value="Bug testing the flight class, this is also just for me to download so i can show maryam" />
-    <MESSAGE value="yerp" />
-    <MESSAGE value="Commit to life baby" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit to life baby" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="sait.frms.exception.NoFlightFoundException" package="sait.frms.exception" />
-          <option name="timeStamp" value="7" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="Bug testing the flight class, this is also just for me to download so i can show maryam" />
   </component>
 </project>

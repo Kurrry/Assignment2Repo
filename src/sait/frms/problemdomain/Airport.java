@@ -16,4 +16,9 @@ public class Airport {
     public String getAirportName() {
         return airportName;
     }
+
+    @Override
+    public String toString() {
+        return getAirportCode() + getAirportName();
+    }
 }

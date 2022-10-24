@@ -26,6 +26,42 @@ public class FlightManager {
         populateFlights();
     }
 
+    public ArrayList<Flight> getFlights() {
+        return flights;
+    }
+
+    public ArrayList<Airport> getAirports() {
+        return airports;
+    }
+
+    public String findAirportByCode(String code) {
+        for(Airport a : airports) {
+            if (a.getAirportCode().equals(code)) {
+                return a.toString();
+            }
+        }
+        return "No airport found with that code";
+    }
+
+    public String findFlightByCode(String code) {
+        for(Flight f : flights) {
+            if (f.getFlightCode().equals(code)) {
+                return f.toString();
+            }
+        }
+        return "No flight found with that code";
+    }
+
+    public ArrayList<Flight> findFlights (String fromCode, String toCode, String weekday) {
+        ArrayList<Flight> flightsFound = new ArrayList<>();
+        for (Flight f : flights) {
+            if (f.getFromCode().equals(fromCode) && f.getToCode().equals(toCode) && f.getWeekday().equals(weekday)) {
+                flightsFound.add(f);
+            }
+        }
+        return flightsFound;
+    }
+
     private void populateAirports() {
         File airportFile = new File("C:\\Users\\User\\Desktop\\CRPG251\\Assignment2\\CPRG251Assignment2DataFiles\\CPRG251Assignment2DataFiles\\airports.csv");
 
@@ -69,15 +105,10 @@ public class FlightManager {
                 } catch (NoFlightFoundException ex) {
                     ex.printStackTrace();
                 }
-                //pretty sure this is done. could swap the variables to inline but descriptive name good
             }
         } catch (FileNotFoundException ignored) {
-
+            //ignored exception because file always exists for us
         }
-    }
-
-    public String findAirportByCode(String code) {
-        return "Finish me senpai";
     }
 
 }
