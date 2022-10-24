@@ -21,19 +21,36 @@ public class FlightManager {
     private ArrayList<Flight> flights = new ArrayList<>();
     private ArrayList<Airport> airports = new ArrayList<>();
 
+    /**
+     * constructor for the FlightManager.
+     * calls populateAirports and populateFlights
+     */
     public FlightManager() {
         populateAirports();
         populateFlights();
     }
 
+    /**
+     *
+     * @return the flights
+     */
     public ArrayList<Flight> getFlights() {
         return flights;
     }
 
+    /**
+     *
+     * @return the airports
+     */
     public ArrayList<Airport> getAirports() {
         return airports;
     }
 
+    /**
+     *
+     * @param code check for airport by code
+     * @return airport string or default string
+     */
     public String findAirportByCode(String code) {
         for(Airport a : airports) {
             if (a.getAirportCode().equals(code)) {
@@ -43,6 +60,11 @@ public class FlightManager {
         return "No airport found with that code";
     }
 
+    /**
+     *
+     * @param code check for flight by code
+     * @return flight string or default string
+     */
     public String findFlightByCode(String code) {
         for(Flight f : flights) {
             if (f.getFlightCode().equals(code)) {
@@ -52,6 +74,13 @@ public class FlightManager {
         return "No flight found with that code";
     }
 
+    /**
+     * search flights list for all flights matching the parameters
+     * @param fromCode fromCode for departing airport
+     * @param toCode toCode for arriving airport
+     * @param weekday day of the week the flight is
+     * @return flightsFound containing flights meeting the parameters
+     */
     public ArrayList<Flight> findFlights (String fromCode, String toCode, String weekday) {
         ArrayList<Flight> flightsFound = new ArrayList<>();
         for (Flight f : flights) {
@@ -62,6 +91,9 @@ public class FlightManager {
         return flightsFound;
     }
 
+    /**
+     * populate airports list from airports.csv
+     */
     private void populateAirports() {
         File airportFile = new File("C:\\Users\\User\\Desktop\\CRPG251\\Assignment2\\CPRG251Assignment2DataFiles\\CPRG251Assignment2DataFiles\\airports.csv");
 
@@ -82,6 +114,9 @@ public class FlightManager {
         }
     }
 
+    /**
+     * populate flights list using the flights.csv file.
+     */
     private void populateFlights() {
         File flightFile = new File("C:\\Users\\User\\Desktop\\CRPG251\\Assignment2\\CPRG251Assignment2DataFiles\\CPRG251Assignment2DataFiles\\flights.csv");
 
