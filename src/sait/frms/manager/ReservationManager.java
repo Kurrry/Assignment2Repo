@@ -21,12 +21,16 @@ public class ReservationManager {
 	ArrayList<Reservation> reservations = new ArrayList<>();
 	
 	public ReservationManager() {
-
+		try {
+			populateFromBinary();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			//placeholder
+		}
 	}
 
 	public Reservation makeReservation(Flight flight, String name, String citizenship) throws NoNameException, NoCitizenshipException,
 			NoSeatsAvailableException {
-		StringBuilder reservationCode = new StringBuilder();
 
 
 		if (name == null || name.equals("")) {
