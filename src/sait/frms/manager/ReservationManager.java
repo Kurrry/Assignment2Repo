@@ -110,14 +110,20 @@ public class ReservationManager {
 
 		if (flight.isDomestic()) {
 			reservationCode.append("D");
-			for (int i = 0; i < 4; i++) {
-				int temp = random.nextInt(10);
-				if (i == 0 && temp == 0) {
-					temp++;
-				}
-				reservationCode.append(temp);
-			}
 		}
+
+		if (!flight.isDomestic()) {
+			reservationCode.append("I");
+		}
+
+		for (int i = 0; i < 4; i++) {
+			int temp = random.nextInt(10);
+			if (i == 0 && temp == 0) {
+				temp++;
+			}
+			reservationCode.append(temp);
+		}
+
 		return String.valueOf(reservationCode);
 	}
 
@@ -151,6 +157,5 @@ public class ReservationManager {
 			raf.close();
 	}
 }
-
 
 //persist() method saves reservations to the binary file
