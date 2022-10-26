@@ -39,10 +39,6 @@ public class FlightsTab extends TabBase
 	private JTextField txtReserveList;
 	private JComboBox<String> cBoxFlightFind;
 
-
-	/**
-	 * Creates the components for flights tab.
-	 */
 	/**
 	 * Creates the components for flights tab.
 	 * 
@@ -110,6 +106,10 @@ public class FlightsTab extends TabBase
 		return panel;
 	}
 
+	/**
+	 * create the east panel containing reserve info
+	 * @return panel east panel
+	 */
 	private JPanel createReservePanel() {
 		JPanel panel = new JPanel();
 		JLabel reserve = new JLabel("Reserve");
@@ -122,6 +122,10 @@ public class FlightsTab extends TabBase
 		return panel;
 	}
 
+	/**
+	 *
+	 * @return btnReserve a button
+	 */
 	private JButton reserveButton() {
 		btnReserve = new JButton("Reserve");
 		btnReserve.addActionListener(new reserveButtonListener());
@@ -129,6 +133,11 @@ public class FlightsTab extends TabBase
 		return btnReserve;
 	}
 
+	/**
+	 * panel containing a textfield and a label
+	 * @param label string to be used for the label
+	 * @return panel list panel to be placed in list panel
+	 */
 	private JPanel reserveListPanels(String label) {
 		JPanel panel = new JPanel();
 		JLabel labelText = new JLabel(label);
@@ -149,6 +158,11 @@ public class FlightsTab extends TabBase
 		return panel;
 	}
 
+	/**
+	 * panel containing editable and uneditable textfields with their appropriate labels.
+	 * used for formatting sub-panels.
+	 * @return panel GridBag panel
+	 */
 	private JPanel reserveInfoList() {
 		JPanel panel = new JPanel(new GridBagLayout());
 
@@ -163,6 +177,10 @@ public class FlightsTab extends TabBase
 		return panel;
 	}
 
+	/**
+	 * south panel containing flightFinder info
+	 * @return fFpanel south panel
+	 */
 	private JPanel createFlightFinderPanel() {
 		JPanel fFPanel = new JPanel();
 		JLabel flightFinder = new JLabel("Flight Finder");
@@ -176,6 +194,12 @@ public class FlightsTab extends TabBase
 		return fFPanel;
 	}
 
+	/**
+	 * comboBox to search for flights
+	 * @param options
+	 * @param label
+	 * @return comboBox containing options
+	 */
 	private JPanel createFFComboBox(String[] options, String label) {
 		cBoxFlightFind = new JComboBox<>(options);
 		JPanel fFBoxPanel = new JPanel();
@@ -191,6 +215,10 @@ public class FlightsTab extends TabBase
 		return fFBoxPanel;
 	}
 
+	/**
+	 * panel used to format comboBox
+	 * @return fFPanel containg comboBoxes
+	 */
 	private JPanel fFInfoList() {
 		JPanel fFPanel = new JPanel(new GridBagLayout());
 
@@ -204,6 +232,10 @@ public class FlightsTab extends TabBase
 		return fFPanel;
 	}
 
+	/**
+	 * Panel containing button
+	 * @return buttonPanel containing button
+	 */
 	private JPanel fFButton() {
 		JPanel buttonPanel = new JPanel();
 		btnFlightFind = new JButton("Find Flights");
@@ -217,6 +249,11 @@ public class FlightsTab extends TabBase
 		return buttonPanel;
 	}
 
+	/**
+	 * method to create constraints
+	 * @param y gridy position
+	 * @return constraint the GridBagConstraint
+	 */
 	private GridBagConstraints createCon(int y) {
 		GridBagConstraints constraint = new GridBagConstraints();
 		constraint.gridx = 0;
