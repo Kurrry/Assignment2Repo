@@ -80,8 +80,8 @@ public class Flight {
         return seats;
     }
 
-    public void setSeats(int seats) {
-        this.seats = seats;
+    public void decrementSeats(int removedSeats) {
+        this.seats = this.seats - removedSeats;
     }
 
     public double getCostPerSeat() {
@@ -90,19 +90,16 @@ public class Flight {
 
     //needs to be finished I think
     public boolean isDomestic() {
-        return flightCode.charAt(0) == 'Y';
+        return fromCode.charAt(0) == 'Y' && toCode.charAt(0) == 'Y';
     }
 
-    private boolean parseCode(String code) throws NoFlightFoundException {
-
-            Pattern regex = Pattern.compile("[ABCOTV]{2}[\\-]+[0-9]{4}");
-            Matcher match = regex.matcher(code);
-            boolean matches = match.matches();
-            if (!matches) {
-                throw new NoFlightFoundException(code);
-            }
-
-            return true;
+    private void parseCode(String code) throws NoFlightFoundException {
+        Pattern regex = Pattern.compile("[ABCOTV]{2}[\\-]+[0-9]{4}");
+        Matcher match = regex.matcher(code);
+        boolean matches = match.matches();
+        if (!matches) {
+            throw new NoFlightFoundException(code);
+        }
     }
     @Override
     public String toString() {

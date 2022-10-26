@@ -107,7 +107,7 @@ public class FlightManager {
                 }
             }
         } catch (FileNotFoundException ignored) {
-            //ignored exception because file always exists for us
+            //ignored exception because file always exists for us+
         }
     }
 
