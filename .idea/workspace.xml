@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="im a noob">
+    <list default="true" id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="javadoc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Reservation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +35,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/kursn/IdeaProjects/Assignment2/res/reserves.bin",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.TestClass">
     <configuration name="AppDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sait.frms.application.AppDriver" />
@@ -82,7 +78,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="" />
+      <changelist id="c113dfc9-e610-4e44-9193-8dcbe99b72fc" name="Changes" comment="yerp" />
       <created>1665702590001</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -116,42 +112,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666202613199</updated>
     </task>
-    <task id="LOCAL-00005" summary="FlightManager finished">
-      <created>1666571706167</created>
+    <task id="LOCAL-00005" summary="yerp">
+      <created>1666206988824</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1666571706168</updated>
+      <updated>1666206988824</updated>
     </task>
-    <task id="LOCAL-00006" summary="Started ReservationManager and changed Reservation constructor to no longer use active in the parameter. it is instead set via the makeReservation method now">
-      <created>1666572869740</created>
+    <task id="LOCAL-00006" summary="Commit to life baby">
+      <created>1666217020939</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1666572869740</updated>
+      <updated>1666217020939</updated>
     </task>
-    <task id="LOCAL-00007" summary="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass. JavaDoc not done and some areas are indicated as placeholders with comments.">
-      <created>1666827287565</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1666827287566</updated>
-    </task>
-    <task id="LOCAL-00008" summary="lol">
-      <created>1666827630161</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1666827630161</updated>
-    </task>
-    <task id="LOCAL-00009" summary="im a noob">
-      <created>1666827829200</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1666827829200</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,12 +144,23 @@
     <MESSAGE value="formatting/cleaning up" />
     <MESSAGE value="Cleaned up gridbag in flightstab, created starting point of first exception (going to ask maryam about this today) and finished up the flight class based on my current assumption that my exception works." />
     <MESSAGE value="Bug testing the flight class, this is also just for me to download so i can show maryam" />
-    <MESSAGE value="FlightManager finished" />
-    <MESSAGE value="Started ReservationManager and changed Reservation constructor to no longer use active in the parameter. it is instead set via the makeReservation method now" />
-    <MESSAGE value="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass." />
-    <MESSAGE value="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass. JavaDoc not done and some areas are indicated as placeholders with comments." />
-    <MESSAGE value="lol" />
-    <MESSAGE value="im a noob" />
-    <option name="LAST_COMMIT_MESSAGE" value="im a noob" />
+    <MESSAGE value="yerp" />
+    <MESSAGE value="Commit to life baby" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit to life baby" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="sait.frms.exception.NoFlightFoundException" package="sait.frms.exception" />
+          <option name="timeStamp" value="7" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java</url>
+          <line>193</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
