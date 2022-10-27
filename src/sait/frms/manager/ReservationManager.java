@@ -1,7 +1,5 @@
 package sait.frms.manager;
 
-import java.io.EOFException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -16,8 +14,7 @@ import sait.frms.problemdomain.Reservation;
 public class ReservationManager {
 
 	private static final String RESERVE_FILE = "res\\reserves.bin";
-	private static final String READ = "r";
-	private static final String WRITE = "w";
+	private static final String READ_WRITE = "rw";
 	ArrayList<Reservation> reservations = new ArrayList<>();
 	
 	public ReservationManager() {
@@ -29,9 +26,14 @@ public class ReservationManager {
 		}
 	}
 
-	public Reservation makeReservation(Flight flight, String name, String citizenship) throws NoNameException, NoCitizenshipException,
-			NoSeatsAvailableException {
+	public void printReservations() {
+		for (Reservation r : reservations) {
+			System.out.println(r);
+		}
+	}
 
+	public Reservation makeReservation(Flight flight, String name, String citizenship, boolean status) throws NoNameException, NoCitizenshipException,
+			NoSeatsAvailableException {
 
 		if (name == null || name.equals("")) {
 			throw new NoNameException();
@@ -47,18 +49,28 @@ public class ReservationManager {
 
 		Reservation reservation = new Reservation(generateReservationCode(flight), flight.getFlightCode(), flight.getAirlineName(flight.getFlightCode()),
 				name, citizenship, flight.getCostPerSeat());
-		flight.decrementSeats(1);
-		reservation.setActive(true);
+		reservation.setActiveSeatControl(status, flight);
 		reservations.add(reservation);
 
 		return reservation;
+	}
+
+	public void updateReservation (Flight flight, String reservationCode, String name, String citizenship, boolean status) {
+		for (Reservation r : reservations) {
+			if (r.getReservationCode().equals(reservationCode)) {
+				r.setActiveSeatControl(status, flight);
+				r.setName(name);
+				r.setCitizenship(citizenship);
+				break;
+			}
+		}
 	}
 	
 	public ArrayList<Reservation> findReservations(String code, String airline, String name) {
 		ArrayList<Reservation> foundRes = new ArrayList<>();
 
 		for(Reservation r : reservations) {
-			if (r.getFlightCode().equals(code) && r.getAirline().equals(airline) && r.getName().equals(name)) {
+			if (r.getFlightCode().equals(code) || r.getAirline().equals(airline) || r.getName().equals(name)) {
 				foundRes.add(r);
 			}
 		}
@@ -71,13 +83,14 @@ public class ReservationManager {
 		for (Reservation r : reservations) {
 			if (r.getReservationCode().equals(code)) {
 				reserve = r;
+				break;
 			}
 		}
 		return reserve;
 	}
 
 	public void persist() {
-		try (RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, WRITE)) {
+		try (RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, READ_WRITE)) {
 			for (Reservation r : reservations) {
 				String reservationCode = String.format("%s-5", r.getReservationCode());
 				String flightCode = String.format("%s-7", r.getFlightCode());
@@ -110,9 +123,7 @@ public class ReservationManager {
 
 		if (flight.isDomestic()) {
 			reservationCode.append("D");
-		}
-
-		if (!flight.isDomestic()) {
+		} else {
 			reservationCode.append("I");
 		}
 
@@ -137,7 +148,7 @@ public class ReservationManager {
 		double cost = 0;
 		boolean isActive = false;
 
-		RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, READ);
+		RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, READ_WRITE);
 			while (!endOfFile) {
 				try {
 					reservationCode = raf.readUTF();
@@ -156,6 +167,58 @@ public class ReservationManager {
 			}
 			raf.close();
 	}
+
+	/*
+	private void persistTest() {
+		try (RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, WRITE)) {
+			for (Reservation r : reservations) {
+				String writeMsg = String.format("%b,%s-5,%s-7,%s-17,%s-50,%s-75,%f\n", r.isActive(), r.getReservationCode(), r.getFlightCode(),
+						r.getAirline(), r.getName(), r.getCitizenship(), r.getCost());
+
+				raf.writeUTF(writeMsg);
+			}
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			//place holder
+		}
+	}
+
+
+	private void populateTest() throws IOException {
+		boolean endOfFile = false;
+		String reservationCode = "";
+		String flightCode = "";
+		String airline = "";
+		String name = "";
+		String citizenship = "";
+		double cost = 0;
+		boolean isActive = false;
+		String[] temp;
+
+		RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, READ);
+		while (!endOfFile) {
+			try {
+				temp = raf.readLine().split(",");
+				isActive = Boolean.parseBoolean(temp[0]);
+				reservationCode = temp[1].trim();
+				flightCode = temp[2].trim();
+				airline = temp[3].trim();
+				name = temp[4].trim();
+				citizenship = temp[5].trim();
+				cost = Double.parseDouble(temp[6]);
+			} catch (IOException e) {
+				endOfFile = true;
+			}
+			Reservation tempReserve = new Reservation(reservationCode, flightCode, airline, name, citizenship, cost);
+			tempReserve.setActive(isActive);
+			reservations.add(tempReserve);
+		}
+		raf.close();
+	}*/
 }
 
+
+
+
 //persist() method saves reservations to the binary file
+//idea for persist(). turn values into a string and write as a whole string then split string during populate method

@@ -80,8 +80,11 @@ public class Flight {
         return seats;
     }
 
-    public void decrementSeats(int removedSeats) {
-        this.seats = this.seats - removedSeats;
+    public void decrementSeats() {
+        this.seats--;
+    }
+    public void incrementSeats() {
+        this.seats++;
     }
 
     public double getCostPerSeat() {

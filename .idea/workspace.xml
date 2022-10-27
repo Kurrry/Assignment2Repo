@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass. JavaDoc not done and some areas are indicated as placeholders with comments.">
+    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="im a noob">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Reservation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +37,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/kursn/IdeaProjects/Assignment2/res/reserves.bin",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.TestClass">
     <configuration name="AppDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sait.frms.application.AppDriver" />
@@ -131,7 +137,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666827287566</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="lol">
+      <created>1666827630161</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1666827630161</updated>
+    </task>
+    <task id="LOCAL-00009" summary="im a noob">
+      <created>1666827829200</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1666827829200</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +173,8 @@
     <MESSAGE value="Started ReservationManager and changed Reservation constructor to no longer use active in the parameter. it is instead set via the makeReservation method now" />
     <MESSAGE value="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass." />
     <MESSAGE value="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass. JavaDoc not done and some areas are indicated as placeholders with comments." />
-    <option name="LAST_COMMIT_MESSAGE" value="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass. JavaDoc not done and some areas are indicated as placeholders with comments." />
+    <MESSAGE value="lol" />
+    <MESSAGE value="im a noob" />
+    <option name="LAST_COMMIT_MESSAGE" value="im a noob" />
   </component>
 </project>

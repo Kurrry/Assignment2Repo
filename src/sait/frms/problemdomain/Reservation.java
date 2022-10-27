@@ -60,12 +60,20 @@ public class Reservation {
 		return active;
 	}
 
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(boolean active) {
+	public void setActiveSeatControl(boolean active, Flight flight) {
 		this.active = active;
+		if (active) {
+			flight.decrementSeats();
+		} else {
+			flight.incrementSeats();
+		}
 	}
 
 
@@ -102,8 +110,8 @@ public class Reservation {
 	
 	@Override
 	public String toString(){
-		return "Reservation code: " + getReservationCode() + ", Flight: " + getFlightCode() + " Airline: " + getAirline() +
-		" Name: " + getName() + " Citizenship: " + getCitizenship() + " Cost: " + getCost() + " Active: " + isActive();
+		return "Reservation code: " + getReservationCode() + ", Flight: " + getFlightCode() + ", Airline: " + getAirline() +
+		", Name: " + getName() + ", Citizenship: " + getCitizenship() + ", Cost: " + getCost() + ", Active: " + isActive();
 	}
 
 }
