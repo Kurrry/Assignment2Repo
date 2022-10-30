@@ -13,12 +13,12 @@ import java.io.IOException;
 
 public class TestClass {
     public static void main(String[] args) throws NoFlightFoundException, NoCitizenshipException, NoSeatsAvailableException, NoNameException, IOException {
-        Flight testFlight = new Flight("OA-9255","ORD","YUL","Monday","18:45",292,396.00);
+        //Flight testFlight = new Flight("OA-9255","ORD","YUL","Monday","18:45",292,396.00);
 
-        System.out.println(testFlight);
+        //System.out.println(testFlight);
 
-        ReservationManager manager = new ReservationManager();
-        manager.printReservations();
+        //ReservationManager manager = new ReservationManager();
+        //manager.printReservations();
 
 
         //Reservation testReserve = manager.makeReservation(testFlight, "bill", "na", true);

@@ -43,7 +43,7 @@ public class ReservationManager {
             throw new NoSeatsAvailableException();
         }
 
-        Reservation reservation = new Reservation(generateReservationCode(flight), flight.getFlightCode(), flight.getAirlineName(flight.getFlightCode()),
+        Reservation reservation = new Reservation(generateReservationCode(flight), flight.getFlightCode(), flight.getAirlineName(),
                 name, citizenship, flight.getCostPerSeat());
         reservation.setActiveSeatControl(status, flight);
         reservations.add(reservation);

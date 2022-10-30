@@ -19,12 +19,12 @@ public class Flight {
 
     }
 
-    public Flight(String flightCode, String fromCode, String toCode, String weekday,
+    public Flight(String flightCode, String airlineName, String fromCode, String toCode, String weekday,
                   String time, int seats, double costPerSeat) throws NoFlightFoundException {
 
         parseCode(flightCode);
 
-        this.airlineName = getAirlineName(flightCode.substring(0,2));
+        this.airlineName = airlineName;
         this.flightCode = flightCode;
         this.fromCode = fromCode;
         this.toCode = toCode;
@@ -38,25 +38,7 @@ public class Flight {
         return flightCode;
     }
 
-    public String getAirlineName(String substring) {
-
-        switch(substring) {
-            case "OA":
-                airlineName = "Otto Airlines";
-                break;
-
-            case "CA":
-                airlineName = "Conned Air";
-                break;
-
-            case "TB":
-                airlineName = "Try a Buss Airways";
-                break;
-
-            case "VA":
-                airlineName = "Vertical Airways";
-                break;
-        }
+    public String getAirlineName() {
         return airlineName;
     }
 
