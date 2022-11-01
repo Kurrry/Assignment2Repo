@@ -3,13 +3,18 @@ package sait.frms.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import sait.frms.exception.NoCitizenshipException;
+import sait.frms.exception.NoNameException;
+import sait.frms.exception.NoSeatsAvailableException;
 import sait.frms.manager.FlightManager;
 import sait.frms.manager.ReservationManager;
 import sait.frms.problemdomain.Flight;
+import sait.frms.problemdomain.Reservation;
 
 /**
  * Holds the components for the flights tab.
@@ -35,7 +40,13 @@ public class FlightsTab extends TabBase {
     private JScrollPane scrollPane;
     private JButton btnReserve;
     private JButton btnFlightFind;
-    private JTextField txtReserveList;
+    private JTextField flightReserveText;
+    private JTextField airlineReserveText;
+    private JTextField dayReserveText;
+    private JTextField timeReserveText;
+    private JTextField costReserveText;
+    private JTextField nameReserveText;
+    private JTextField citizenReserveText;
     private JComboBox<String> cBoxFromFlightFind;
     private JComboBox<String> cBoxToFlightFind;
     private JComboBox<String> cBoxDayFlightFind;
@@ -43,6 +54,7 @@ public class FlightsTab extends TabBase {
             "PEK", "DXB", "HKG", "LHR", "HND", "ORD", "PVG", "CDG", "AMS", "DEL", "FRA", "DFW",};
     private static final String[] days = {"Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
             "Saturday", "Sunday"};
+    private ArrayList<Flight> tempList;
 
     /**
      * Creates the components for flights tab.
@@ -148,23 +160,103 @@ public class FlightsTab extends TabBase {
      * @param label string to be used for the label
      * @return panel list panel to be placed in list panel
      */
-    private JPanel reserveListPanels(String label) {
+    private JPanel flightTextPanel(String label) {
         JPanel panel = new JPanel();
         JLabel labelText = new JLabel(label);
-        txtReserveList = new JTextField(14);
+        flightReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         panel.setPreferredSize(new Dimension(250, 30));
-        txtReserveList.setFont(new Font("Times New Roman", Font.BOLD, 15));
-        txtReserveList.setEditable(false);
-
-        if (label.equals("Citizenship:") || label.equals("Name:")) {
-            txtReserveList.setEditable(true);
-        }
-
+        flightReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        flightReserveText.setEditable(false);
 
         panel.add(labelText);
-        panel.add(txtReserveList);
+        panel.add(flightReserveText);
+        return panel;
+    }
+
+    private JPanel airlineTextPanel(String label) {
+        JPanel panel = new JPanel();
+        JLabel labelText = new JLabel(label);
+        airlineReserveText = new JTextField(14);
+
+        panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panel.setPreferredSize(new Dimension(250, 30));
+        airlineReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        airlineReserveText.setEditable(false);
+
+        panel.add(labelText);
+        panel.add(airlineReserveText);
+        return panel;
+    }
+    private JPanel dayTextPanel(String label) {
+        JPanel panel = new JPanel();
+        JLabel labelText = new JLabel(label);
+        dayReserveText = new JTextField(14);
+
+        panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panel.setPreferredSize(new Dimension(250, 30));
+        dayReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        dayReserveText.setEditable(false);
+
+        panel.add(labelText);
+        panel.add(dayReserveText);
+        return panel;
+    }
+    private JPanel timeTextPanel(String label) {
+        JPanel panel = new JPanel();
+        JLabel labelText = new JLabel(label);
+        timeReserveText = new JTextField(14);
+
+        panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panel.setPreferredSize(new Dimension(250, 30));
+        timeReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        timeReserveText.setEditable(false);
+
+        panel.add(labelText);
+        panel.add(timeReserveText);
+        return panel;
+    }
+    private JPanel costTextPanel(String label) {
+        JPanel panel = new JPanel();
+        JLabel labelText = new JLabel(label);
+        costReserveText = new JTextField(14);
+
+        panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panel.setPreferredSize(new Dimension(250, 30));
+        costReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        costReserveText.setEditable(false);
+
+        panel.add(labelText);
+        panel.add(costReserveText);
+        return panel;
+    }
+    private JPanel nameTextPanel(String label) {
+        JPanel panel = new JPanel();
+        JLabel labelText = new JLabel(label);
+        nameReserveText = new JTextField(14);
+
+        panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panel.setPreferredSize(new Dimension(250, 30));
+        nameReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        nameReserveText.setEditable(true);
+
+        panel.add(labelText);
+        panel.add(nameReserveText);
+        return panel;
+    }
+    private JPanel citizenTextPanel(String label) {
+        JPanel panel = new JPanel();
+        JLabel labelText = new JLabel(label);
+        citizenReserveText = new JTextField(14);
+
+        panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panel.setPreferredSize(new Dimension(250, 30));
+        citizenReserveText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        citizenReserveText.setEditable(true);
+
+        panel.add(labelText);
+        panel.add(citizenReserveText);
         return panel;
     }
 
@@ -177,13 +269,13 @@ public class FlightsTab extends TabBase {
     private JPanel reserveInfoList() {
         JPanel panel = new JPanel(new GridBagLayout());
 
-        panel.add(reserveListPanels("Flight:"), createCon(0));
-        panel.add(reserveListPanels("Airline:"), createCon(1));
-        panel.add(reserveListPanels("Day:"), createCon(2));
-        panel.add(reserveListPanels("Time:"), createCon(3));
-        panel.add(reserveListPanels("Cost:"), createCon(4));
-        panel.add(reserveListPanels("Name:"), createCon(5));
-        panel.add(reserveListPanels("Citizenship:"), createCon(6));
+        panel.add(flightTextPanel("Flight:"), createCon(0));
+        panel.add(airlineTextPanel("Airline:"), createCon(1));
+        panel.add(dayTextPanel("Day:"), createCon(2));
+        panel.add(timeTextPanel("Time:"), createCon(3));
+        panel.add(costTextPanel("Cost:"), createCon(4));
+        panel.add(nameTextPanel("Name:"), createCon(5));
+        panel.add(citizenTextPanel("Citizenship:"), createCon(6));
 
         return panel;
     }
@@ -320,7 +412,7 @@ public class FlightsTab extends TabBase {
         }
     }
 
-    private class fFComboBoxListener implements ActionListener {
+    private static class fFComboBoxListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -330,7 +422,20 @@ public class FlightsTab extends TabBase {
 
     private class reserveButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
+            JFrame frame = new JFrame();
+            frame.setSize(new Dimension(200, 200));
+            Reservation temp = null;
+            try {
+                temp = reservationManager.makeReservation(flightsList.getSelectedValue(), nameReserveText.getText(),
+                        citizenReserveText.getText());
+            } catch (NoCitizenshipException ex) {
+                JOptionPane.showMessageDialog(frame, "Invalid Citizenship entered. Please try again");
+            } catch (NoSeatsAvailableException ex) {
+                JOptionPane.showMessageDialog(frame, "No seats available on this flight. Please try again");
+            } catch (NoNameException ex) {
+                JOptionPane.showMessageDialog(frame, "Invalid name entered. Please try again");
+            }
+            JOptionPane.showMessageDialog(frame, "Reservation created. You code is " + temp.getReservationCode());
         }
     }
 
@@ -340,24 +445,12 @@ public class FlightsTab extends TabBase {
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
-
+            Flight tempFlight = flightsList.getSelectedValue();
+            flightReserveText.setText(tempFlight.getFlightCode());
+            airlineReserveText.setText(tempFlight.getAirlineName());
+            dayReserveText.setText(tempFlight.getWeekday());
+            timeReserveText.setText(tempFlight.getTime());
+            costReserveText.setText(String.valueOf(tempFlight.getCostPerSeat()));
         }
-
     }
 }
-	/*private GridBagConstraints createGbc(int x, int y) {
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx = x;
-		gbc.gridy = y;
-		gbc.gridwidth = 1;
-		gbc.gridheight = 1;
-
-		gbc.anchor = (x == 0) ? GridBagConstraints.WEST : GridBagConstraints.EAST;
-		gbc.fill = (x == 0) ? GridBagConstraints.BOTH
-				: GridBagConstraints.HORIZONTAL;
-
-		gbc.insets = (x == 0) ? WEST_INSETS : EAST_INSETS;
-		gbc.weightx = (x == 0) ? 0.1 : 1.0;
-		gbc.weighty = 1.0;
-		return gbc;
-	}*/

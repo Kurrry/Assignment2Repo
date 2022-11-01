@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="testing, possible method changes in comments, general clean up. populateFromBinary is not working as intended so ill ask maryam about that today.">
+    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="flightsTab JList and combo boxes are functional. The button will search the list for any flights matching the combo box fields and return a list that populates the JList with its contents. Combo boxes need to be instance variables so they can have their values called on for the button. just putting this here to remind eric if he gets to the reservationTab before i do. See also discord messages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666827829200</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="flightsTab JList and combo boxes are functional. The button will search the list for any flights matching the combo box fields and return a list that populates the JList with its contents. Combo boxes need to be instance variables so they can have their values called on for the button. just putting this here to remind eric if he gets to the reservationTab before i do. See also discord messages">
+      <created>1667097477833</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667097477833</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,38 +180,10 @@
     <MESSAGE value="I have finished the ReservationManager, but it is UNTESTED and the FlightManager is also UNTESTED. These can be tested using the TestClass. JavaDoc not done and some areas are indicated as placeholders with comments." />
     <MESSAGE value="lol" />
     <MESSAGE value="im a noob" />
-    <option name="LAST_COMMIT_MESSAGE" value="im a noob" />
+    <MESSAGE value="flightsTab JList and combo boxes are functional. The button will search the list for any flights matching the combo box fields and return a list that populates the JList with its contents. Combo boxes need to be instance variables so they can have their values called on for the button. just putting this here to remind eric if he gets to the reservationTab before i do. See also discord messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="flightsTab JList and combo boxes are functional. The button will search the list for any flights matching the combo box fields and return a list that populates the JList with its contents. Combo boxes need to be instance variables so they can have their values called on for the button. just putting this here to remind eric if he gets to the reservationTab before i do. See also discord messages" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>308</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>310</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>312</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>316</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>318</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="sait.frms.manager.FlightManager" memberName="flights" />

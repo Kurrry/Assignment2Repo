@@ -28,7 +28,7 @@ public class ReservationManager {
         }
     }
 
-    public Reservation makeReservation(Flight flight, String name, String citizenship, boolean status) throws NoNameException, NoCitizenshipException,
+    public Reservation makeReservation(Flight flight, String name, String citizenship) throws NoNameException, NoCitizenshipException,
             NoSeatsAvailableException {
 
         if (name == null || name.equals("")) {
@@ -45,7 +45,7 @@ public class ReservationManager {
 
         Reservation reservation = new Reservation(generateReservationCode(flight), flight.getFlightCode(), flight.getAirlineName(),
                 name, citizenship, flight.getCostPerSeat());
-        reservation.setActiveSeatControl(status, flight);
+        reservation.setActiveSeatControl(true, flight);
         reservations.add(reservation);
 
         return reservation;
