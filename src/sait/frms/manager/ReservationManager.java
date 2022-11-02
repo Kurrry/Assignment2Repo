@@ -17,7 +17,7 @@ public class ReservationManager {
 
     private static final String RESERVE_FILE = "res\\reserves.bin";
     private static final String READ_WRITE = "rw";
-    ArrayList<Reservation> reservations = new ArrayList<>();
+    private final ArrayList<Reservation> reservations = new ArrayList<>();
 
     public ReservationManager() {
         try {
@@ -26,6 +26,10 @@ public class ReservationManager {
             ex.printStackTrace();
             //placeholder
         }
+    }
+
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
     }
 
     public Reservation makeReservation(Flight flight, String name, String citizenship) throws NoNameException, NoCitizenshipException,
@@ -66,13 +70,14 @@ public class ReservationManager {
         ArrayList<Reservation> foundRes = new ArrayList<>();
 
         for (Reservation r : reservations) {
-            if (r.getFlightCode().equals(code) || r.getAirline().equals(airline) || r.getName().equals(name)) {
+            if (r.getReservationCode().equals(code) || r.getAirline().equals(airline) || r.getName().equals(name)) {
                 foundRes.add(r);
             }
         }
         return foundRes;
     }
 
+    //this method doesn't appear to have use as findReservation provides better functionality
     public Reservation findReservationByCode(String code) {
         Reservation reserve = null;
 
@@ -166,9 +171,6 @@ public class ReservationManager {
         }
         raf.close();
     }
-
-
-
 }
 
 //code for testing purposes

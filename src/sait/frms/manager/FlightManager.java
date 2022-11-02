@@ -13,13 +13,6 @@ import java.util.Scanner;
 //"C:\\Users\\User\\Desktop\\CRPG251\\Assignment2\\CPRG251Assignment2DataFiles\\CPRG251Assignment2DataFiles\\airports.csv" avery laptop path
 public class FlightManager {
     public final String WEEKDAY_ANY = "Any";
-    public final String WEEKDAY_SUNDAY = "Sunday";
-    public final String WEEKDAY_MONDAY = "Monday";
-    public final String WEEKDAY_TUESDAY = "Tuesday";
-    public final String WEEKDAY_WEDNESDAY = "Wednesday";
-    public final String WEEKDAY_THURSDAY = "Thursday";
-    public final String WEEKDAY_FRIDAY = "Friday";
-    public final String WEEKDAY_SATURDAY = "Saturday";
     private final ArrayList<Flight> flights = new ArrayList<>();
     private final ArrayList<Airport> airports = new ArrayList<>();
 
@@ -42,24 +35,29 @@ public class FlightManager {
 
     /**
      *
-     * @return the airports
+     * @return airportCodes
      */
-    public ArrayList<Airport> getAirports() {
-        return this.airports;
+    public ArrayList<String> getAirports() {
+        ArrayList<String> airportCodes = new ArrayList<>();
+
+        for (Airport a : airports) {
+            airportCodes.add(a.getAirportCode());
+        }
+        return airportCodes;
     }
 
     /**
-     *
+     * This method has no use in the gui
      * @param code check for airport by code
      * @return airport string or default string
      */
-    public String findAirportByCode(String code) {
+    public Airport findAirportByCode(String code) {
         for(Airport a : airports) {
             if (a.getAirportCode().equals(code)) {
-                return a.toString();
+                return a;
             }
         }
-        return "No airport found with that code";
+        return null;
     }
 
     /**
@@ -67,13 +65,13 @@ public class FlightManager {
      * @param code check for flight by code
      * @return flight string or default string
      */
-    public String findFlightByCode(String code) {
+    public Flight findFlightByCode(String code) {
         for(Flight f : flights) {
             if (f.getFlightCode().equals(code)) {
-                return f.toString();
+                return f;
             }
         }
-        return "No flight found with that code";
+        return null;
     }
 
     /**
@@ -113,7 +111,7 @@ public class FlightManager {
      * populate airports list from airports.csv
      */
     private void populateAirports() {
-        File airportFile = new File("C:\\Users\\kursn\\IdeaProjects\\Assignment2\\res\\airports.csv");
+        File airportFile = new File("res\\airports.csv");
 
         try (Scanner fileScanner = new Scanner(airportFile)) {
             fileScanner.useDelimiter(",|\r\n");
@@ -136,7 +134,7 @@ public class FlightManager {
      * populate flights list using the flights.csv file.
      */
     private void populateFlights() {
-        File flightFile = new File("C:\\Users\\kursn\\IdeaProjects\\Assignment2\\res\\flights.csv");
+        File flightFile = new File("res\\flights.csv");
 
         try (Scanner fileScanner = new Scanner(flightFile)) {
             fileScanner.useDelimiter(",|\r\n");
@@ -164,7 +162,6 @@ public class FlightManager {
             //ignored exception because file always exists for us+
         }
     }
-
 }
 
 //FRONT END WILL CATCH EXCEPTIONS

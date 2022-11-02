@@ -5,6 +5,8 @@ package sait.frms.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.*;
 
@@ -85,6 +87,7 @@ public class MainWindow extends JFrame
 		
 		centerPanel = createCenterPanel();
 		add(centerPanel, BorderLayout.CENTER);
+		addWindowListener(new xButtonListener());
 
 	}
 	
@@ -115,7 +118,7 @@ public class MainWindow extends JFrame
 		cardLayout = new CardLayout();
 		
 		this.flightsTab = new FlightsTab(this.flightManager, this.reservationManager);
-		this.reservationsTab = new ReservationsTab(this.reservationManager);
+		this.reservationsTab = new ReservationsTab(this.reservationManager, this.flightManager);
 		
 		panel.setLayout(cardLayout);
 		
@@ -180,4 +183,42 @@ private class TabButtonActionListener implements ActionListener
 		}
 		
 	}
+
+private class xButtonListener implements WindowListener {
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		reservationManager.persist();
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+
+	}
+}
 }

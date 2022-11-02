@@ -8,7 +8,9 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import sait.frms.manager.FlightManager;
 import sait.frms.manager.ReservationManager;
+import sait.frms.problemdomain.Flight;
 import sait.frms.problemdomain.Reservation;
 
 /**
@@ -20,6 +22,7 @@ public class ReservationsTab extends TabBase {
 	 * Instance of reservation manager.
 	 */
 	private ReservationManager reservationManager;
+	private FlightManager flightManager;
 
 	private JList<Reservation> reservationsList;
 
@@ -48,8 +51,9 @@ public class ReservationsTab extends TabBase {
 	/**
 	 * Creates the components for reservations tab.
 	 */
-	public ReservationsTab(ReservationManager reservationManager) {
+	public ReservationsTab(ReservationManager reservationManager, FlightManager flightManager) {
 		this.reservationManager = reservationManager;
+		this.flightManager = flightManager;
 		panel.setLayout(new BorderLayout());
 
 		panel.add(createNorthPanel(), BorderLayout.NORTH);
@@ -82,6 +86,9 @@ public class ReservationsTab extends TabBase {
 		panel.setLayout(new BorderLayout());
 
 		reservationsModel = new DefaultListModel<>();
+		for (Reservation r : reservationManager.getReservations()) {
+			reservationsModel.addElement(r);
+		}
 		reservationsList = new JList<>(reservationsModel);
 
 		// User can only select one item at a time.
@@ -155,12 +162,6 @@ public class ReservationsTab extends TabBase {
 		return panel;
 	}
 
-	
-	
-	
-	
-	
-
 	/**
 	 * Creates and returns panel used in eastPanel, bPanel. Creates button used to update a reservation.
 	 * @return JPanel updateButton
@@ -227,10 +228,6 @@ public class ReservationsTab extends TabBase {
 
 		return title;
 	}
-
-	
-	
-	
 	
 	/**
 	 * Creates and returns panel used in eastPanel, contentPanel. Creates grid with labels on left and textfields/combobox on the right.
@@ -271,7 +268,6 @@ public class ReservationsTab extends TabBase {
 
 		return panel;
 	}
-	
 	
 	/**
 	 * Creates and returns panel used in southPanel, contentPanel. Creates grid with labels on left and textfields on the right.
@@ -334,21 +330,26 @@ public class ReservationsTab extends TabBase {
 		return constraints;
 	}
 
-
-
-
-
-
 	private class ReservationActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == updateButton) {
-				System.out.println(nameTextBox.getText() + "\n" + citizTextBox.getText());
+			Object source = e.getSource();
+			boolean status = statusComboBox.getSelectedItem() != "Inactive";
+
+			if (source == searchButton) {
+				reservationsModel.removeAllElements();
+				for (Reservation r : reservationManager.findReservations(codeTextBox.getText(), airlineTextBox.getText(),
+						nameTextBox.getText())) {
+					reservationsModel.addElement(r);
+				}
 			}
 
+			if (source == updateButton) {
+				reservationManager.updateReservation(flightManager.findFlightByCode(flightTextBox.getText()),
+						codeTextBox.getText(), nameTextBox.getText(), citizTextBox.getText(), status);
+			}
 		}
-
 	}
 
 	private class MyListSelectionListener implements ListSelectionListener {
@@ -357,7 +358,18 @@ public class ReservationsTab extends TabBase {
 		 */
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
-
+			Reservation tempReserve = reservationsList.getSelectedValue();
+			codeTextBox.setText(tempReserve.getReservationCode());
+			flightTextBox.setText(tempReserve.getFlightCode());
+			airlineTextBox.setText(tempReserve.getAirline());
+			costTextBox.setText(String.valueOf(tempReserve.getCost()));
+			nameTextBox.setText(tempReserve.getName());
+			citizTextBox.setText(tempReserve.getCitizenship());
+			String tempText = "Inactive";
+			if (tempReserve.isActive()) {
+				tempText = "Active";
+			}
+			statusComboBox.setSelectedItem(tempText);
 		}
 
 	}

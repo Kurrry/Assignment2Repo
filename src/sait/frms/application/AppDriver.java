@@ -17,5 +17,4 @@ public class AppDriver {
 		MainWindow mainWindow = new MainWindow();
 		mainWindow.display();
 	}
-
 }

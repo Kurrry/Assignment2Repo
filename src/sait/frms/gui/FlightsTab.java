@@ -13,6 +13,7 @@ import sait.frms.exception.NoNameException;
 import sait.frms.exception.NoSeatsAvailableException;
 import sait.frms.manager.FlightManager;
 import sait.frms.manager.ReservationManager;
+import sait.frms.problemdomain.Airport;
 import sait.frms.problemdomain.Flight;
 import sait.frms.problemdomain.Reservation;
 
@@ -36,6 +37,7 @@ public class FlightsTab extends TabBase {
     private JList<Flight> flightsList;
 
     private DefaultListModel<Flight> flightsModel;
+    private JPanel jListPanel;
 
     private JScrollPane scrollPane;
     private JButton btnReserve;
@@ -50,11 +52,9 @@ public class FlightsTab extends TabBase {
     private JComboBox<String> cBoxFromFlightFind;
     private JComboBox<String> cBoxToFlightFind;
     private JComboBox<String> cBoxDayFlightFind;
-    private static final String[] toFromOptions = {"YYC", "YEG", "YUL", "YOW", "YYZ", "YVR", "YWG", "ATL",
-            "PEK", "DXB", "HKG", "LHR", "HND", "ORD", "PVG", "CDG", "AMS", "DEL", "FRA", "DFW",};
+    private String[] toFromOptions;
     private static final String[] days = {"Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
             "Saturday", "Sunday"};
-    private ArrayList<Flight> tempList;
 
     /**
      * Creates the components for flights tab.
@@ -103,14 +103,11 @@ public class FlightsTab extends TabBase {
      * @return JPanel that goes in center.
      */
     private JPanel createFlightsPanel() {
-        JPanel panel = new JPanel();
+        jListPanel = new JPanel();
 
-        panel.setLayout(new BorderLayout());
+        jListPanel.setLayout(new BorderLayout());
 
         flightsModel = new DefaultListModel<>();
-        for (Flight f : flightManager.getFlights()) {
-            flightsModel.addElement(f);
-        }
 
         flightsList = new JList<>(flightsModel);
 
@@ -122,9 +119,9 @@ public class FlightsTab extends TabBase {
 
         flightsList.addListSelectionListener(new MyListSelectionListener());
 
-        panel.add(scrollPane);
+        jListPanel.add(scrollPane);
 
-        return panel;
+        return jListPanel;
     }
 
     /**
@@ -304,7 +301,8 @@ public class FlightsTab extends TabBase {
      * @return comboBox containing options
      */
     private JPanel createFromFFComboBox() {
-        cBoxFromFlightFind = new JComboBox<>(FlightsTab.toFromOptions);
+        toFromOptions = flightManager.getAirports().toArray(new String[0]);
+        cBoxFromFlightFind = new JComboBox<>(toFromOptions);
         JPanel fFBoxPanel = new JPanel();
         JLabel fFLabel = new JLabel("From:");
 
@@ -318,7 +316,8 @@ public class FlightsTab extends TabBase {
         return fFBoxPanel;
     }
     private JPanel createToFFComboBox() {
-        cBoxToFlightFind = new JComboBox<>(FlightsTab.toFromOptions);
+        toFromOptions = flightManager.getAirports().toArray(new String[0]);
+        cBoxToFlightFind = new JComboBox<>(toFromOptions);
         JPanel fFBoxPanel = new JPanel();
         JLabel fFLabel = new JLabel("To:");
 
@@ -408,7 +407,6 @@ public class FlightsTab extends TabBase {
             for (Flight f :flightManager.findFlights(from, to, day)) {
                 flightsModel.addElement(f);
             }
-            flightsList = new JList<>(flightsModel);
         }
     }
 
@@ -445,12 +443,16 @@ public class FlightsTab extends TabBase {
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
+            if (flightsList.isSelectionEmpty()) {
+                flightsList.clearSelection();
+            }
             Flight tempFlight = flightsList.getSelectedValue();
             flightReserveText.setText(tempFlight.getFlightCode());
             airlineReserveText.setText(tempFlight.getAirlineName());
             dayReserveText.setText(tempFlight.getWeekday());
             timeReserveText.setText(tempFlight.getTime());
             costReserveText.setText(String.valueOf(tempFlight.getCostPerSeat()));
+
         }
     }
 }
