@@ -186,6 +186,7 @@ public class FlightsTab extends TabBase {
         panel.add(airlineReserveText);
         return panel;
     }
+
     private JPanel dayTextPanel(String label) {
         JPanel panel = new JPanel();
         JLabel labelText = new JLabel(label);
@@ -200,6 +201,7 @@ public class FlightsTab extends TabBase {
         panel.add(dayReserveText);
         return panel;
     }
+
     private JPanel timeTextPanel(String label) {
         JPanel panel = new JPanel();
         JLabel labelText = new JLabel(label);
@@ -214,6 +216,7 @@ public class FlightsTab extends TabBase {
         panel.add(timeReserveText);
         return panel;
     }
+
     private JPanel costTextPanel(String label) {
         JPanel panel = new JPanel();
         JLabel labelText = new JLabel(label);
@@ -228,6 +231,7 @@ public class FlightsTab extends TabBase {
         panel.add(costReserveText);
         return panel;
     }
+
     private JPanel nameTextPanel(String label) {
         JPanel panel = new JPanel();
         JLabel labelText = new JLabel(label);
@@ -242,6 +246,7 @@ public class FlightsTab extends TabBase {
         panel.add(nameReserveText);
         return panel;
     }
+
     private JPanel citizenTextPanel(String label) {
         JPanel panel = new JPanel();
         JLabel labelText = new JLabel(label);
@@ -315,6 +320,7 @@ public class FlightsTab extends TabBase {
 
         return fFBoxPanel;
     }
+
     private JPanel createToFFComboBox() {
         toFromOptions = flightManager.getAirports().toArray(new String[0]);
         cBoxToFlightFind = new JComboBox<>(toFromOptions);
@@ -330,6 +336,7 @@ public class FlightsTab extends TabBase {
 
         return fFBoxPanel;
     }
+
     private JPanel createDayFFComboBox() {
         cBoxDayFlightFind = new JComboBox<>(FlightsTab.days);
         JPanel fFBoxPanel = new JPanel();
@@ -402,9 +409,9 @@ public class FlightsTab extends TabBase {
             String to = Arrays.toString(new String[]{(String) cBoxToFlightFind.getSelectedItem()});
             to = to.substring(1, 4);
             String day = Arrays.toString(new String[]{(String) cBoxDayFlightFind.getSelectedItem()});
-            day = day.substring(1, day.length()-1);
+            day = day.substring(1, day.length() - 1);
             flightsModel.removeAllElements();
-            for (Flight f :flightManager.findFlights(from, to, day)) {
+            for (Flight f : flightManager.findFlights(from, to, day)) {
                 flightsModel.addElement(f);
             }
         }
@@ -443,16 +450,14 @@ public class FlightsTab extends TabBase {
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
-            if (flightsList.isSelectionEmpty()) {
-                flightsList.clearSelection();
-            }
             Flight tempFlight = flightsList.getSelectedValue();
-            flightReserveText.setText(tempFlight.getFlightCode());
-            airlineReserveText.setText(tempFlight.getAirlineName());
-            dayReserveText.setText(tempFlight.getWeekday());
-            timeReserveText.setText(tempFlight.getTime());
-            costReserveText.setText(String.valueOf(tempFlight.getCostPerSeat()));
-
+            if (tempFlight != null) {
+                flightReserveText.setText(tempFlight.getFlightCode());
+                airlineReserveText.setText(tempFlight.getAirlineName());
+                dayReserveText.setText(tempFlight.getWeekday());
+                timeReserveText.setText(tempFlight.getTime());
+                costReserveText.setText(String.valueOf(tempFlight.getCostPerSeat()));
+            }
         }
     }
 }

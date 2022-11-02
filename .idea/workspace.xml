@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="FlightsTab is now finished. I tried to get lambdas working but was running into strange errors, so I abandoned that in favor of the working code. I'm going to ask Maryam about why it's doing this.">
+    <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="testing, possible method changes in comments, general clean up. populateFromBinary is not working as intended so ill ask maryam about that today.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/application/AppDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/application/AppDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/ReservationsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/ReservationsTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,14 +157,7 @@
       <option name="project" value="LOCAL" />
       <updated>1667097477833</updated>
     </task>
-    <task id="LOCAL-00011" summary="FlightsTab is now finished. I tried to get lambdas working but was running into strange errors, so I abandoned that in favor of the working code. I'm going to ask Maryam about why it's doing this.">
-      <created>1667272136005</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1667272136005</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,83 +182,9 @@
     <MESSAGE value="lol" />
     <MESSAGE value="im a noob" />
     <MESSAGE value="flightsTab JList and combo boxes are functional. The button will search the list for any flights matching the combo box fields and return a list that populates the JList with its contents. Combo boxes need to be instance variables so they can have their values called on for the button. just putting this here to remind eric if he gets to the reservationTab before i do. See also discord messages" />
-    <MESSAGE value="FlightsTab is now finished. I tried to get lambdas working but was running into strange errors, so I abandoned that in favor of the working code. I'm going to ask Maryam about why it's doing this." />
-    <option name="LAST_COMMIT_MESSAGE" value="FlightsTab is now finished. I tried to get lambdas working but was running into strange errors, so I abandoned that in favor of the working code. I'm going to ask Maryam about why it's doing this." />
+    <option name="LAST_COMMIT_MESSAGE" value="flightsTab JList and combo boxes are functional. The button will search the list for any flights matching the combo box fields and return a list that populates the JList with its contents. Combo boxes need to be instance variables so they can have their values called on for the button. just putting this here to remind eric if he gets to the reservationTab before i do. See also discord messages" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>450</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>451</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>452</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>453</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>409</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>408</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>407</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>401</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>403</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>402</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>447</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>448</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java</url>
-          <line>446</line>
-          <properties class="sait.frms.gui.FlightsTab.MyListSelectionListener" method="valueChanged">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="sait.frms.manager.FlightManager" memberName="flights" />

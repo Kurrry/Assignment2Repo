@@ -359,18 +359,19 @@ public class ReservationsTab extends TabBase {
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
 			Reservation tempReserve = reservationsList.getSelectedValue();
-			codeTextBox.setText(tempReserve.getReservationCode());
-			flightTextBox.setText(tempReserve.getFlightCode());
-			airlineTextBox.setText(tempReserve.getAirline());
-			costTextBox.setText(String.valueOf(tempReserve.getCost()));
-			nameTextBox.setText(tempReserve.getName());
-			citizTextBox.setText(tempReserve.getCitizenship());
-			String tempText = "Inactive";
-			if (tempReserve.isActive()) {
-				tempText = "Active";
+			if (tempReserve != null) {
+				codeTextBox.setText(tempReserve.getReservationCode());
+				flightTextBox.setText(tempReserve.getFlightCode());
+				airlineTextBox.setText(tempReserve.getAirline());
+				costTextBox.setText(String.valueOf(tempReserve.getCost()));
+				nameTextBox.setText(tempReserve.getName());
+				citizTextBox.setText(tempReserve.getCitizenship());
+				String tempText = "Inactive";
+				if (tempReserve.isActive()) {
+					tempText = "Active";
+				}
+				statusComboBox.setSelectedItem(tempText);
 			}
-			statusComboBox.setSelectedItem(tempText);
 		}
-
 	}
 }
