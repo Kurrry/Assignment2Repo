@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2e65504b-37ff-4697-8626-22446c43ad03" name="Changes" comment="testing, possible method changes in comments, general clean up. populateFromBinary is not working as intended so ill ask maryam about that today.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sait/frms/application/TestClass.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/FlightsTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sait/frms/gui/ReservationsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/gui/ReservationsTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/FlightManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/manager/ReservationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Airport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sait/frms/problemdomain/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sait/frms/problemdomain/Reservation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

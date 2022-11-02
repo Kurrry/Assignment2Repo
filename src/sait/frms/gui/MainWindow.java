@@ -1,7 +1,6 @@
 package sait.frms.gui;
 
 
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,209 +15,205 @@ import sait.frms.manager.ReservationManager;
 
 /**
  * The main window (JFrame).
- * 
  */
-public class MainWindow extends JFrame 
-{
-	private static final String TAB_FLIGHTS = "flights";
-	private static final String TAB_RESERVATIONS = "reservations";
-	
-	/**
-	 * Holds the flight  manager.
-	 */
+public class MainWindow extends JFrame {
+    private static final String TAB_FLIGHTS = "flights";
+    private static final String TAB_RESERVATIONS = "reservations";
+
+    /**
+     * Holds the flight  manager.
+     */
     private FlightManager flightManager;
-	
+
     /**
-	 * Holds the reservation  manager.
-	 */
+     * Holds the reservation  manager.
+     */
     private ReservationManager reservationManager;
-    
+
     /**
-	 * Card layout to display tab content.
-	 */
-	private CardLayout cardLayout;
-	
-	/**
-	 * North panel.
-	 */
-	private JPanel northPanel;
-	
-	/**
-	 * Center panel.
-	 */
-	private JPanel centerPanel;
-	
-	/**
-	 * Flights tab button.
-	 */
-	private JButton flightsButton;
-	
-	/**
-	 * Reservations tab button.
-	 */
-	private JButton reservationsButton;
-	
-	/**
-	 * Flights tab panel.
-	 */
-	private TabBase flightsTab;
-	
-	/**
-	 * Reservations tab panel.
-	 */
-	private TabBase reservationsTab;
-	
-	/**
-	 * Creates the Main Window and any components inside it.
-	 */
-	public MainWindow() {
-		this.flightManager = new FlightManager();
-		this.reservationManager = new ReservationManager();
-		
-		setTitle("Flight Reservation Management System");
-		
-		setLayout(new BorderLayout());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(900, 700));
-		setResizable(false);
-		
-		northPanel = createNorthPanel();
-		add(northPanel, BorderLayout.NORTH);
-		
-		centerPanel = createCenterPanel();
-		add(centerPanel, BorderLayout.CENTER);
-		addWindowListener(new xButtonListener());
+     * Card layout to display tab content.
+     */
+    private CardLayout cardLayout;
 
-	}
-	
-	/**
-	 * Creates the north panel.
-	 * @return JPanel that goes in north.
-	 */
-	private JPanel createNorthPanel() 
-	{
-		JPanel panel = new JPanel();
-		
-		panel.setLayout(new BorderLayout());
-			
-		JPanel tabPanel = createTabPanel();
-		panel.add(tabPanel, BorderLayout.SOUTH);
-		
-		return panel;
-	}
-	
-	/**
-	 * Creates the center panel.
-	 * @return JPanel that goes in center.
-	 */
-	private JPanel createCenterPanel() 
-	{
-		JPanel panel = new JPanel();
-		
-		cardLayout = new CardLayout();
-		
-		this.flightsTab = new FlightsTab(this.flightManager, this.reservationManager);
-		this.reservationsTab = new ReservationsTab(this.reservationManager, this.flightManager);
-		
-		panel.setLayout(cardLayout);
-		
-		panel.add(flightsTab.getPanel(), TAB_FLIGHTS);
-		panel.add(reservationsTab.getPanel(), TAB_RESERVATIONS);
-		
-		cardLayout.first(panel);
-		
-		return panel;
-	}
-	
-	/**
-	 * Creates the tab buttons.
-	 * @return JPanel containing tab buttons.
-	 */
-	private JPanel createTabPanel() {
-		JPanel tabPanel = new JPanel();
-		
-		tabPanel.setLayout(new GridLayout(1, 2));
-		
-		flightsButton = new JButton("Flights");
-		reservationsButton = new JButton("Reservations");
-		
-		flightsButton.addActionListener(new TabButtonActionListener());
-		reservationsButton.addActionListener(new TabButtonActionListener());
-		
-		tabPanel.add(flightsButton);
-		tabPanel.add(reservationsButton);
-		
-		return tabPanel;
-	}
-	
-	/**
-	 * Displays the JFrame window.
-	 */
-	public void display() 
-	{
-		pack();
-		setVisible(true);
-	}
-	
-	/**
-	 * Inner action listener class that listens for a tab button to be clicked.
-	 * 
-	 * @author Nick Hamnett, Mohamed
-	 * @version January 2, 2020
-	 */
-private class TabButtonActionListener implements ActionListener 
-	{
+    /**
+     * North panel.
+     */
+    private JPanel northPanel;
 
-		@Override
-		public void actionPerformed(ActionEvent e) 
-		{
-			if (e.getSource() == flightsButton) 
-			{
-				cardLayout.show(centerPanel, TAB_FLIGHTS);
-			} 
-			else if (e.getSource() == reservationsButton) 
-			{
-				cardLayout.show(centerPanel, TAB_RESERVATIONS);
-			}
-		}
-		
-	}
+    /**
+     * Center panel.
+     */
+    private JPanel centerPanel;
 
-private class xButtonListener implements WindowListener {
+    /**
+     * Flights tab button.
+     */
+    private JButton flightsButton;
 
-	@Override
-	public void windowOpened(WindowEvent e) {
+    /**
+     * Reservations tab button.
+     */
+    private JButton reservationsButton;
 
-	}
+    /**
+     * Flights tab panel.
+     */
+    private TabBase flightsTab;
 
-	@Override
-	public void windowClosing(WindowEvent e) {
-		reservationManager.persist();
-	}
+    /**
+     * Reservations tab panel.
+     */
+    private TabBase reservationsTab;
 
-	@Override
-	public void windowClosed(WindowEvent e) {
+    /**
+     * Creates the Main Window and any components inside it.
+     */
+    public MainWindow() {
+        this.flightManager = new FlightManager();
+        this.reservationManager = new ReservationManager();
 
-	}
+        setTitle("Flight Reservation Management System");
 
-	@Override
-	public void windowIconified(WindowEvent e) {
+        setLayout(new BorderLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(900, 700));
+        setResizable(false);
 
-	}
+        northPanel = createNorthPanel();
+        add(northPanel, BorderLayout.NORTH);
 
-	@Override
-	public void windowDeiconified(WindowEvent e) {
+        centerPanel = createCenterPanel();
+        add(centerPanel, BorderLayout.CENTER);
+        addWindowListener(new xButtonListener());
 
-	}
+    }
 
-	@Override
-	public void windowActivated(WindowEvent e) {
+    /**
+     * Creates the north panel.
+     *
+     * @return JPanel that goes in north.
+     */
+    private JPanel createNorthPanel() {
+        JPanel panel = new JPanel();
 
-	}
+        panel.setLayout(new BorderLayout());
 
-	@Override
-	public void windowDeactivated(WindowEvent e) {
+        JPanel tabPanel = createTabPanel();
+        panel.add(tabPanel, BorderLayout.SOUTH);
 
-	}
-}
+        return panel;
+    }
+
+    /**
+     * Creates the center panel.
+     *
+     * @return JPanel that goes in center.
+     */
+    private JPanel createCenterPanel() {
+        JPanel panel = new JPanel();
+
+        cardLayout = new CardLayout();
+
+        this.flightsTab = new FlightsTab(this.flightManager, this.reservationManager);
+        this.reservationsTab = new ReservationsTab(this.reservationManager, this.flightManager);
+
+        panel.setLayout(cardLayout);
+
+        panel.add(flightsTab.getPanel(), TAB_FLIGHTS);
+        panel.add(reservationsTab.getPanel(), TAB_RESERVATIONS);
+
+        cardLayout.first(panel);
+
+        return panel;
+    }
+
+    /**
+     * Creates the tab buttons.
+     *
+     * @return JPanel containing tab buttons.
+     */
+    private JPanel createTabPanel() {
+        JPanel tabPanel = new JPanel();
+
+        tabPanel.setLayout(new GridLayout(1, 2));
+
+        flightsButton = new JButton("Flights");
+        reservationsButton = new JButton("Reservations");
+
+        flightsButton.addActionListener(new TabButtonActionListener());
+        reservationsButton.addActionListener(new TabButtonActionListener());
+
+        tabPanel.add(flightsButton);
+        tabPanel.add(reservationsButton);
+
+        return tabPanel;
+    }
+
+    /**
+     * Displays the JFrame window.
+     */
+    public void display() {
+        pack();
+        setVisible(true);
+    }
+
+    /**
+     * Inner action listener class that listens for a tab button to be clicked.
+     *
+     * @author Nick Hamnett, Mohamed
+     * @version January 2, 2020
+     */
+    private class TabButtonActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == flightsButton) {
+                cardLayout.show(centerPanel, TAB_FLIGHTS);
+            } else if (e.getSource() == reservationsButton) {
+                cardLayout.show(centerPanel, TAB_RESERVATIONS);
+            }
+        }
+
+    }
+
+    /**
+     * WindowListener inner class to save all reservations when the user exits the gui via the 'X' button
+     */
+    private class xButtonListener implements WindowListener {
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            reservationManager.persist();
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+
+        }
+    }
 }

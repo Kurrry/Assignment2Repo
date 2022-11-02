@@ -1,7 +1,6 @@
 package sait.frms.manager;
 
 import java.io.EOFException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -19,6 +18,10 @@ public class ReservationManager {
     private static final String READ_WRITE = "rw";
     private final ArrayList<Reservation> reservations = new ArrayList<>();
 
+    /**
+     * constructor for the ReservationManager
+     * populates the reservation list from the reserves.bin file using the populateFromBinary method
+     */
     public ReservationManager() {
         try {
             populateFromBinary();
@@ -28,10 +31,25 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * method to get the list of reservations
+     * @return reservations ArrayList containing the reservations
+     */
     public ArrayList<Reservation> getReservations() {
         return reservations;
     }
 
+    /**
+     * method for making a reservation on a flight
+     *
+     * @param flight flight that is being booked
+     * @param name name of the person booking the flight
+     * @param citizenship citizenship of the person booking the flights
+     * @return reservation reservation for the flight
+     * @throws NoNameException if the no name is entered for the reservation
+     * @throws NoCitizenshipException if no citizenship is entered for the reservation
+     * @throws NoSeatsAvailableException if there are no seats left on the flight being reserved
+     */
     public Reservation makeReservation(Flight flight, String name, String citizenship) throws NoNameException, NoCitizenshipException,
             NoSeatsAvailableException {
 
@@ -55,6 +73,15 @@ public class ReservationManager {
         return reservation;
     }
 
+    /**
+     * method for updating an existing reservation. Only name, citizenship and status may be changed after a reservation is made.
+     *
+     * @param flight flight for the reservation being updated
+     * @param reservationCode reservationCode for the reservation being updated
+     * @param name name of the person whose reservation is being updated
+     * @param citizenship citizenship of the person whose reservation is being updated
+     * @param status status of the reservation being updated. Active or Inactive
+     */
     public void updateReservation(Flight flight, String reservationCode, String name, String citizenship, boolean status) {
         for (Reservation r : reservations) {
             if (r.getReservationCode().equals(reservationCode)) {
@@ -66,30 +93,30 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * method for searching the list of reservations based on any of the 3 params
+     *
+     * @param code code for the reservation being searched
+     * @param airline name of the airline on a reservation
+     * @param name name of the person on a reservation
+     * @return foundRes ArrayList containing the reservations that match any of the params
+     */
     public ArrayList<Reservation> findReservations(String code, String airline, String name) {
         ArrayList<Reservation> foundRes = new ArrayList<>();
 
         for (Reservation r : reservations) {
-            if (r.getReservationCode().equals(code) || r.getAirline().equals(airline) || r.getName().equals(name)) {
+            if (r.getReservationCode().equalsIgnoreCase(code) || r.getAirline().equalsIgnoreCase(airline) ||
+                    r.getName().equalsIgnoreCase(name)) {
                 foundRes.add(r);
             }
         }
         return foundRes;
     }
 
-    //this method doesn't appear to have use as findReservation provides better functionality
-    public Reservation findReservationByCode(String code) {
-        Reservation reserve = null;
-
-        for (Reservation r : reservations) {
-            if (r.getReservationCode().equals(code)) {
-                reserve = r;
-                break;
-            }
-        }
-        return reserve;
-    }
-
+    /**
+     * Method to save the list of reservations to the reserves.bin binary file.
+     * Method is called when the user exits the system window via the 'X' button.
+     */
     public void persist() {
         try (RandomAccessFile raf = new RandomAccessFile(RESERVE_FILE, READ_WRITE)) {
             for (Reservation r : reservations) {
@@ -113,10 +140,22 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * Method to find the available seats
+     *
+     * @param flight flight whose seats are being counted
+     * @return int indicating the number of seats available
+     */
     private int getAvailableSeats(Flight flight) {
         return flight.getSeats();
     }
 
+    /**
+     * Method to generate the reservation code for a reservation after it is made
+     *
+     * @param flight flight that the reservation is being made for
+     * @return reservationCode code associated with a reservation
+     */
     private String generateReservationCode(Flight flight) {
         StringBuilder reservationCode = new StringBuilder();
         Random random = new Random();
@@ -138,6 +177,10 @@ public class ReservationManager {
         return String.valueOf(reservationCode);
     }
 
+    /**
+     * method for populating the reservations ArrayList from the reserves.bin file.
+     * @throws IOException if the file does not exist
+     */
     private void populateFromBinary() throws IOException {
         boolean endOfFile = false;
         String reservationCode;

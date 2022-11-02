@@ -1,19 +1,14 @@
 package sait.frms.gui;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
-import javax.swing.event.*;
 
 import sait.frms.exception.NoCitizenshipException;
 import sait.frms.exception.NoNameException;
 import sait.frms.exception.NoSeatsAvailableException;
 import sait.frms.manager.FlightManager;
 import sait.frms.manager.ReservationManager;
-import sait.frms.problemdomain.Airport;
 import sait.frms.problemdomain.Flight;
 import sait.frms.problemdomain.Reservation;
 
@@ -117,7 +112,16 @@ public class FlightsTab extends TabBase {
         // Wrap JList in JScrollPane so it is scrollable.
         scrollPane = new JScrollPane(this.flightsList);
 
-        flightsList.addListSelectionListener(new MyListSelectionListener());
+        flightsList.addListSelectionListener(e -> {
+            Flight tempFlight = flightsList.getSelectedValue();
+            if (tempFlight != null) {
+                flightReserveText.setText(tempFlight.getFlightCode());
+                airlineReserveText.setText(tempFlight.getAirlineName());
+                dayReserveText.setText(tempFlight.getWeekday());
+                timeReserveText.setText(tempFlight.getTime());
+                costReserveText.setText(String.valueOf(tempFlight.getCostPerSeat()));
+            }
+        });
 
         jListPanel.add(scrollPane);
 
@@ -142,24 +146,41 @@ public class FlightsTab extends TabBase {
     }
 
     /**
-     * @return btnReserve a button
+     * method for creating the reserve button
+     * @return btnReserve button for reserving a seat on a flight
      */
     private JButton reserveButton() {
         btnReserve = new JButton("Reserve");
-        btnReserve.addActionListener(new reserveButtonListener());
+        btnReserve.addActionListener(e -> {
+            JFrame frame = new JFrame();
+            frame.setSize(new Dimension(200, 200));
+            Reservation temp = null;
+            try {
+                temp = reservationManager.makeReservation(flightsList.getSelectedValue(), nameReserveText.getText(),
+                        citizenReserveText.getText());
+            } catch (NoCitizenshipException ex) {
+                JOptionPane.showMessageDialog(frame, "Invalid Citizenship entered. Please try again");
+            } catch (NoSeatsAvailableException ex) {
+                JOptionPane.showMessageDialog(frame, "No seats available on this flight. Please try again");
+            } catch (NoNameException ex) {
+                JOptionPane.showMessageDialog(frame, "Invalid name entered. Please try again");
+            }
+            if (temp != null) {
+                JOptionPane.showMessageDialog(frame, "Reservation created. You code is " + temp.getReservationCode());
+            }
+        });
         btnReserve.setPreferredSize(new Dimension(225, 25));
         return btnReserve;
     }
 
     /**
-     * panel containing a textfield and a label
+     * method for creating the flight textfield
      *
-     * @param label string to be used for the label
-     * @return panel list panel to be placed in list panel
+     * @return panel panel containing the flight textfield
      */
-    private JPanel flightTextPanel(String label) {
+    private JPanel flightTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Flight:");
         flightReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -172,9 +193,13 @@ public class FlightsTab extends TabBase {
         return panel;
     }
 
-    private JPanel airlineTextPanel(String label) {
+    /**
+     * method for creating the airline textfield
+     * @return panel panel containing the airline textfield
+     */
+    private JPanel airlineTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Airline:");
         airlineReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -187,9 +212,13 @@ public class FlightsTab extends TabBase {
         return panel;
     }
 
-    private JPanel dayTextPanel(String label) {
+    /**
+     * method for creating the day textfield
+     * @return panel panel containing the day textfield
+     */
+    private JPanel dayTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Day:");
         dayReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -202,9 +231,13 @@ public class FlightsTab extends TabBase {
         return panel;
     }
 
-    private JPanel timeTextPanel(String label) {
+    /**
+     * method for creating the time textfield
+     * @return panel panel containing the time textfield
+     */
+    private JPanel timeTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Time:");
         timeReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -217,9 +250,13 @@ public class FlightsTab extends TabBase {
         return panel;
     }
 
-    private JPanel costTextPanel(String label) {
+    /**
+     * method for creating the cost textfield
+     * @return panel panel containing the cost textfield
+     */
+    private JPanel costTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Cost:");
         costReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -232,9 +269,13 @@ public class FlightsTab extends TabBase {
         return panel;
     }
 
-    private JPanel nameTextPanel(String label) {
+    /**
+     * method for creating the name textfield
+     * @return panel panel containing the name textfield
+     */
+    private JPanel nameTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Name:");
         nameReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -247,9 +288,14 @@ public class FlightsTab extends TabBase {
         return panel;
     }
 
-    private JPanel citizenTextPanel(String label) {
+    /**
+     * method for creating the citizen textfield
+     * @return panel the panel containing citisenship textfield
+     */
+
+    private JPanel citizenTextPanel() {
         JPanel panel = new JPanel();
-        JLabel labelText = new JLabel(label);
+        JLabel labelText = new JLabel("Citizenship:");
         citizenReserveText = new JTextField(14);
 
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -271,13 +317,13 @@ public class FlightsTab extends TabBase {
     private JPanel reserveInfoList() {
         JPanel panel = new JPanel(new GridBagLayout());
 
-        panel.add(flightTextPanel("Flight:"), createCon(0));
-        panel.add(airlineTextPanel("Airline:"), createCon(1));
-        panel.add(dayTextPanel("Day:"), createCon(2));
-        panel.add(timeTextPanel("Time:"), createCon(3));
-        panel.add(costTextPanel("Cost:"), createCon(4));
-        panel.add(nameTextPanel("Name:"), createCon(5));
-        panel.add(citizenTextPanel("Citizenship:"), createCon(6));
+        panel.add(flightTextPanel(), createCon(0));
+        panel.add(airlineTextPanel(), createCon(1));
+        panel.add(dayTextPanel(), createCon(2));
+        panel.add(timeTextPanel(), createCon(3));
+        panel.add(costTextPanel(), createCon(4));
+        panel.add(nameTextPanel(), createCon(5));
+        panel.add(citizenTextPanel(), createCon(6));
 
         return panel;
     }
@@ -301,9 +347,9 @@ public class FlightsTab extends TabBase {
     }
 
     /**
-     * comboBox to search for flights
+     * method to create the from combo box in the flight finder panel
      *
-     * @return comboBox containing options
+     * @return fFBoxPanel the panel housing xBoxFromFlightFind
      */
     private JPanel createFromFFComboBox() {
         toFromOptions = flightManager.getAirports().toArray(new String[0]);
@@ -314,13 +360,16 @@ public class FlightsTab extends TabBase {
         fFBoxPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         fFBoxPanel.setPreferredSize(new Dimension(800, 30));
         cBoxFromFlightFind.setPreferredSize(new Dimension(750, 25));
-        cBoxFromFlightFind.addActionListener(new fFComboBoxListener());
         fFBoxPanel.add(fFLabel);
         fFBoxPanel.add(cBoxFromFlightFind);
 
         return fFBoxPanel;
     }
 
+    /**
+     * method to create the to combo box in the flight finder panel
+     * @return fFBoxPanel the panel housing cBoxToFlightFind
+     */
     private JPanel createToFFComboBox() {
         toFromOptions = flightManager.getAirports().toArray(new String[0]);
         cBoxToFlightFind = new JComboBox<>(toFromOptions);
@@ -330,13 +379,16 @@ public class FlightsTab extends TabBase {
         fFBoxPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         fFBoxPanel.setPreferredSize(new Dimension(800, 30));
         cBoxToFlightFind.setPreferredSize(new Dimension(750, 25));
-        cBoxToFlightFind.addActionListener(new fFComboBoxListener());
         fFBoxPanel.add(fFLabel);
         fFBoxPanel.add(cBoxToFlightFind);
 
         return fFBoxPanel;
     }
 
+    /**
+     * Method to create the day combo box in the flight finder panel
+     * @return fFBoxPanel the panel housing cBoxDayFlightFind
+     */
     private JPanel createDayFFComboBox() {
         cBoxDayFlightFind = new JComboBox<>(FlightsTab.days);
         JPanel fFBoxPanel = new JPanel();
@@ -345,7 +397,6 @@ public class FlightsTab extends TabBase {
         fFBoxPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         fFBoxPanel.setPreferredSize(new Dimension(800, 30));
         cBoxDayFlightFind.setPreferredSize(new Dimension(750, 25));
-        cBoxDayFlightFind.addActionListener(new fFComboBoxListener());
         fFBoxPanel.add(fFLabel);
         fFBoxPanel.add(cBoxDayFlightFind);
 
@@ -377,7 +428,18 @@ public class FlightsTab extends TabBase {
         JPanel buttonPanel = new JPanel();
         btnFlightFind = new JButton("Find Flights");
 
-        btnFlightFind.addActionListener(new fFButtonListener());
+        btnFlightFind.addActionListener(e -> {
+            String from = Arrays.toString(new String[]{(String) cBoxFromFlightFind.getSelectedItem()});
+            from = from.substring(1, 4);
+            String to = Arrays.toString(new String[]{(String) cBoxToFlightFind.getSelectedItem()});
+            to = to.substring(1, 4);
+            String day = Arrays.toString(new String[]{(String) cBoxDayFlightFind.getSelectedItem()});
+            day = day.substring(1, day.length() - 1);
+            flightsModel.removeAllElements();
+            for (Flight f : flightManager.findFlights(from, to, day)) {
+                flightsModel.addElement(f);
+            }
+        });
         btnFlightFind.setPreferredSize(new Dimension(790, 25));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setPreferredSize(new Dimension(890, 30));
@@ -398,66 +460,5 @@ public class FlightsTab extends TabBase {
         constraint.gridy = y;
 
         return constraint;
-    }
-
-    private class fFButtonListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String from = Arrays.toString(new String[]{(String) cBoxFromFlightFind.getSelectedItem()});
-            from = from.substring(1, 4);
-            String to = Arrays.toString(new String[]{(String) cBoxToFlightFind.getSelectedItem()});
-            to = to.substring(1, 4);
-            String day = Arrays.toString(new String[]{(String) cBoxDayFlightFind.getSelectedItem()});
-            day = day.substring(1, day.length() - 1);
-            flightsModel.removeAllElements();
-            for (Flight f : flightManager.findFlights(from, to, day)) {
-                flightsModel.addElement(f);
-            }
-        }
-    }
-
-    private static class fFComboBoxListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
-    }
-
-    private class reserveButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            JFrame frame = new JFrame();
-            frame.setSize(new Dimension(200, 200));
-            Reservation temp = null;
-            try {
-                temp = reservationManager.makeReservation(flightsList.getSelectedValue(), nameReserveText.getText(),
-                        citizenReserveText.getText());
-            } catch (NoCitizenshipException ex) {
-                JOptionPane.showMessageDialog(frame, "Invalid Citizenship entered. Please try again");
-            } catch (NoSeatsAvailableException ex) {
-                JOptionPane.showMessageDialog(frame, "No seats available on this flight. Please try again");
-            } catch (NoNameException ex) {
-                JOptionPane.showMessageDialog(frame, "Invalid name entered. Please try again");
-            }
-            JOptionPane.showMessageDialog(frame, "Reservation created. You code is " + temp.getReservationCode());
-        }
-    }
-
-    private class MyListSelectionListener implements ListSelectionListener {
-        /**
-         * Called when user selects an item in the JList.
-         */
-        @Override
-        public void valueChanged(ListSelectionEvent e) {
-            Flight tempFlight = flightsList.getSelectedValue();
-            if (tempFlight != null) {
-                flightReserveText.setText(tempFlight.getFlightCode());
-                airlineReserveText.setText(tempFlight.getAirlineName());
-                dayReserveText.setText(tempFlight.getWeekday());
-                timeReserveText.setText(tempFlight.getTime());
-                costReserveText.setText(String.valueOf(tempFlight.getCostPerSeat()));
-            }
-        }
     }
 }

@@ -8,8 +8,17 @@ public class Reservation {
 	private String citizenship;
 	private double cost;
 	private boolean active;
-	
-	
+
+	/**
+	 * Constructor for the Reservation class
+	 *
+	 * @param reservationCode code for the reservation
+	 * @param flightCode code for the flight
+	 * @param airline name of the airline
+	 * @param name name of the client
+	 * @param citizenship citizenship of the client
+	 * @param cost cost of the reservation
+	 */
 	public Reservation(String reservationCode, String flightCode, String airline, String name, String citizenship,
 			double cost) {
 		this.reservationCode = reservationCode;
@@ -22,7 +31,7 @@ public class Reservation {
 
 
 	/**
-	 * @return the name
+	 * @return the name of the client
 	 */
 	public String getName() {
 		return name;
@@ -65,7 +74,11 @@ public class Reservation {
 	}
 
 	/**
-	 * @param active the active to set
+	 * method to change the available seats on a flight.
+	 * Only returns an accurate value until the window is closed and reloaded.
+	 *
+	 * @param active status of the reservation
+	 * @param flight the flight manipulated
 	 */
 	public void setActiveSeatControl(boolean active, Flight flight) {
 		this.active = active;
@@ -107,7 +120,12 @@ public class Reservation {
 	public double getCost() {
 		return cost;
 	}
-	
+
+	/**
+	 * method to create a string containing the reservation information
+	 *
+	 * @return String reservation information
+	 */
 	@Override
 	public String toString(){
 		return "Reservation code: " + getReservationCode() + ", Flight: " + getFlightCode() + ", Airline: " + getAirline() +

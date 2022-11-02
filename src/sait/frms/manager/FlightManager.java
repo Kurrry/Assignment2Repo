@@ -26,16 +26,16 @@ public class FlightManager {
     }
 
     /**
-     *
-     * @return the flights
+     * return an ArrayList containing all the flights available
+     * @return flights flights ArrayList
      */
     public ArrayList<Flight> getFlights() {
         return this.flights;
     }
 
     /**
-     *
-     * @return airportCodes
+     * method to populate the options in the flight finder to/from comboboxes
+     * @return airportCodes ArrayList of the airport codes
      */
     public ArrayList<String> getAirports() {
         ArrayList<String> airportCodes = new ArrayList<>();
@@ -47,26 +47,12 @@ public class FlightManager {
     }
 
     /**
-     * This method has no use in the gui
-     * @param code check for airport by code
-     * @return airport string or default string
-     */
-    public Airport findAirportByCode(String code) {
-        for(Airport a : airports) {
-            if (a.getAirportCode().equals(code)) {
-                return a;
-            }
-        }
-        return null;
-    }
-
-    /**
-     *
+     * method to find a flight based on the given code
      * @param code check for flight by code
      * @return flight string or default string
      */
     public Flight findFlightByCode(String code) {
-        for(Flight f : flights) {
+        for (Flight f : flights) {
             if (f.getFlightCode().equals(code)) {
                 return f;
             }
@@ -76,15 +62,16 @@ public class FlightManager {
 
     /**
      * search flights list for all flights matching the parameters
+     *
      * @param fromCode fromCode for departing airport
-     * @param toCode toCode for arriving airport
-     * @param weekday day of the week the flight is
+     * @param toCode   toCode for arriving airport
+     * @param weekday  day of the week the flight is
      * @return flightsFound containing flights meeting the parameters
      */
-    public ArrayList<Flight> findFlights (String fromCode, String toCode, String weekday) {
+    public ArrayList<Flight> findFlights(String fromCode, String toCode, String weekday) {
         ArrayList<Flight> flightsFound = new ArrayList<>();
 
-        if(weekday.equals(WEEKDAY_ANY)) {
+        if (weekday.equals(WEEKDAY_ANY)) {
             return anyDay(fromCode, toCode);
         }
 
@@ -96,7 +83,13 @@ public class FlightManager {
         return flightsFound;
     }
 
-    private ArrayList<Flight> anyDay (String fromCode, String toCode) {
+    /**
+     * Method to search for a flight from an airport to another on any day
+     * @param fromCode the departing airport
+     * @param toCode the arriving airport
+     * @return flightsFound ArrayList of flights making the params
+     */
+    private ArrayList<Flight> anyDay(String fromCode, String toCode) {
         ArrayList<Flight> flightsFound = new ArrayList<>();
 
         for (Flight f : flights) {
